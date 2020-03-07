@@ -1,4 +1,6 @@
-/*package com.example.libraryapp;
+package com.example.android.mylibraryapp;
+
+import com.example.android.mylibraryapp.User;
 
 public class Review {
 
@@ -36,4 +38,3 @@ public class Review {
         this.user = user;
     }
 }
-*/

@@ -11,21 +11,33 @@
         android:layout_height="wrap_content"
         android:text="Register"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:textStyle="bold"
         android:textSize="100dp"
         android:textColor="@android:color/black"/>
 
     <EditText
-        android:id="@+id/fullName"
+        android:id="@+id/firstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/edittext_background"
+        android:hint="First Name"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/lastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firstName"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:background="@drawable/edittext_background"
-        android:hint="Full Name"
+        android:hint="Last Name"
         android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp"/>
+
 
     <EditText
         android:id="@+id/email"
@@ -35,17 +47,17 @@
         android:background="@drawable/edittext_background"
         android:hint="Email"
         android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp"/>
 
     <EditText
         android:id="@+id/userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/fullName"
+        android:layout_below="@+id/lastName"
         android:background="@drawable/edittext_background"
         android:hint="User Name"
         android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="5dp"/>
 
 
     <EditText
@@ -64,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button_background"
         android:text="Register"/>
 

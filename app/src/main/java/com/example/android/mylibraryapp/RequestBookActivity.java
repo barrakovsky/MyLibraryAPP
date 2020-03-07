@@ -83,18 +83,18 @@ public class RequestBookActivity extends AppCompatActivity {
         if (!"".equals(tempYear)) {//if field is left empty year is 0
             year = Integer.parseInt(tempYear);
         }
-        Request add = new Request(ISBN, title, author, year, genre, publisher);
+        //Request add = new Request(ISBN, title, author, year, genre, publisher);
 
         String message = "Request submitted";
 
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
-        menuReturn();
+        //menuReturn();
     }
 
-    public void menuReturn() {
+    /*public void menuReturn() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }
+    }*/
 
 }
