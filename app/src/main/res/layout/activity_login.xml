@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:fontFamily="casual"
         android:text="Login"
         android:textColor="@android:color/black"
         android:textSize="100dp"
@@ -38,13 +39,15 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:background="@drawable/button_background"
-        android:text="Login" />
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Login"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/temp"
@@ -54,7 +57,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:onClick="Register"
-        android:text="Not Registered? Click Here to Register" />
+        android:text="Not Registered? Click Here to Register"
+        android:textColor="@color/colorPrimary" />
 
 
 </RelativeLayout>
