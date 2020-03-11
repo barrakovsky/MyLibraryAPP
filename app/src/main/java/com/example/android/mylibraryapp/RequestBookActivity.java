@@ -89,12 +89,12 @@ public class RequestBookActivity extends AppCompatActivity {
 
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
-        //menuReturn();
+        menuReturn();
     }
 
-    /*public void menuReturn() {
+    public void menuReturn() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }*/
+    }
 
 }
