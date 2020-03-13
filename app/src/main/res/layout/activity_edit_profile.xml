@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProfileActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Profile"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="30dp"
+        android:textStyle="bold"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/editProfileUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:text="User Name: "
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_toRightOf="@id/editProfileUserName"
+        android:background="@drawable/edittext_background"
+        android:layout_marginTop="120dp"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/editProfileFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="First Name: "
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@id/editProfileUserName"
+        android:textSize="20sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_toRightOf="@id/editProfileFirstName"
+        android:layout_below="@id/editProfileUserName"
+        android:background="@drawable/edittext_background"
+        android:layout_marginTop="55dp"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/editProfileLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@id/editProfileFirstName"
+        android:layout_marginTop="65dp"
+        android:text="Last Name: "
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_toRightOf="@id/editProfileLastName"
+        android:layout_below="@id/editProfileFirstName"
+        android:background="@drawable/edittext_background"
+        android:layout_marginTop="58dp"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/editProfilePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editProfileLastName"
+        android:layout_marginTop="60dp"
+        android:text="Password: "
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/editProfileLastName"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="55dp"
+        android:layout_toRightOf="@id/editProfilePassword"
+        android:background="@drawable/edittext_background"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editProfilePassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Edit"
+        android:textColor="@android:color/white"
+        android:visibility="visible"/>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editProfilePassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Save"
+        android:textColor="@android:color/white"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/saveButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Cancel"
+        android:textColor="@android:color/white"
+        android:visibility="invisible"/>
+
+</RelativeLayout>
