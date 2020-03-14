@@ -1,6 +1,4 @@
-package com.example.android.mylibraryapp;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.android.mylibraryapp.ControlObjects;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class RegisterActivity extends AppCompatActivity {
+import com.example.android.mylibraryapp.R;
+
+public class RegisterActivity extends BaseActivity {
 
     //Instantiating views
     Button registerButton;

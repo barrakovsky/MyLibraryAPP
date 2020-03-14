@@ -1,8 +1,10 @@
-package com.example.android.mylibraryapp;
+package com.example.android.mylibraryapp.ControlObjects;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.android.mylibraryapp.R;
 
 public class RentalActivity extends AppCompatActivity {
 

@@ -1,10 +1,12 @@
-package com.example.android.mylibraryapp;
+package com.example.android.mylibraryapp.ControlObjects;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class RentalHistory extends AppCompatActivity {
+import com.example.android.mylibraryapp.R;
+
+public class RentalHistoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

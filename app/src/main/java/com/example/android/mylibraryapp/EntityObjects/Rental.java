@@ -1,6 +1,4 @@
-package com.example.android.mylibraryapp;
-import com.example.android.mylibraryapp.Book;
-import com.example.android.mylibraryapp.User;
+package com.example.android.mylibraryapp.EntityObjects;
 
 import java.util.Date;
 

@@ -1,5 +1,9 @@
-package com.example.android.mylibraryapp;
+package com.example.android.mylibraryapp.EntityObjects;
 
+
+import com.example.android.mylibraryapp.EntityObjects.Favorite;
+import com.example.android.mylibraryapp.EntityObjects.Payment;
+import com.example.android.mylibraryapp.EntityObjects.Rental;
 
 import java.util.List;
 

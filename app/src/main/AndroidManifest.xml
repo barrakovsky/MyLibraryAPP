@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RentalHistory"></activity>
-        <activity android:name=".RentalActivity" />
-        <activity android:name=".EditProfileActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".ControlObjects.BaseActivity"></activity>
+        <activity android:name=".ControlObjects.RentalHistoryActivity" />
+        <activity android:name=".ControlObjects.RentalActivity" />
+        <activity android:name=".ControlObjects.EditProfileActivity" />
+        <activity android:name=".ControlObjects.MainActivity" />
+        <activity android:name=".ControlObjects.LoginActivity" />
+        <activity android:name=".ControlObjects.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
