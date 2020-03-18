@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/bookInfo"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#009688"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
             android:text="Book Information"
             android:textAlignment="center"
-            android:textSize="30sp" />
+            android:textColor="#00574B"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/bookImage"
@@ -20,8 +25,10 @@
             android:layout_height="300dp"
             android:layout_below="@id/bookInfo"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
             app:srcCompat="@drawable/no_image_available" />
+
         <TextView
             android:id="@+id/bookTitleLabel"
             android:layout_width="100dp"
@@ -78,7 +85,7 @@
 
         <TextView
             android:id="@+id/bookSummaryLabel"
-            android:layout_width="125dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/bookGenreLabel"
             android:paddingLeft="15dp"
@@ -96,7 +103,7 @@
 
         <TextView
             android:id="@+id/bookQtyLabel"
-            android:layout_width="125dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/bookSummaryLabel"
             android:paddingLeft="15dp"
