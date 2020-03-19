@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ControlObjects.BaseActivity"></activity>
+        <activity android:name=".ControlObjects.EditBookDetailsActivity"></activity>
+        <activity android:name=".ControlObjects.BaseActivity" />
         <activity android:name=".ControlObjects.RentalHistoryActivity" />
         <activity android:name=".ControlObjects.RentalActivity" />
         <activity android:name=".ControlObjects.EditProfileActivity" />

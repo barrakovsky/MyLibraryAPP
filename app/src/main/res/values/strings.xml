@@ -2,4 +2,23 @@
     <string name="app_name">MyLibraryApp</string>
     <string name="Open">open</string>
     <string name="Close">close</string>
+
+    <!-- Edit Book Details Activity -->
+    <string name="edit_book_details_header">Edit Book Details</string>
+    <string name="edit_ISBN_label">ISBN: </string>
+    <string name="edit_ISBN_default">ISBN</string>
+    <string name="edit_title_label">Title: </string>
+    <string name="edit_title_default">Title</string>
+    <string name="edit_author_label">Author: </string>
+    <string name="edit_author_default">Author Name</string>
+    <string name="edit_publisher_label">Publisher: </string>
+    <string name="edit_publisher_default">Publisher Name</string>
+    <string name="edit_year_label">Year: </string>
+    <string name="edit_year_default">Year Published</string>
+    <string name="edit_genre_label">Genre: </string>
+    <string name="edit_genre_default">Genre of Book</string>
+    <string name="edit_summary_label">Summary: </string>
+    <string name="edit_summary_default">Book Summary</string>
+    <string name="edit_qty_label">Quantity: </string>
+    <string name="edit_qty_default">Qty in stock</string>
 </resources>
