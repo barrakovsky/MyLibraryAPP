@@ -20,7 +20,7 @@
         android:textStyle="bold"
         android:textSize="80dp"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
 
         />
     />

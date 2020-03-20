@@ -75,6 +75,11 @@ public class BaseActivity extends AppCompatActivity {
                         startActivity(home);
                         break;
 
+                    case R.id.myRentals:
+                        Intent rental = new Intent(BaseActivity.this, RentalActivity.class);
+                        startActivity(rental);
+                        break;
+
                     default:
 
                         return true;
