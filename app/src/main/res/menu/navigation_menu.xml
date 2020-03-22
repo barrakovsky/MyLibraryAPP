@@ -3,9 +3,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item android:id="@+id/myProfile"
+    <item android:id="@+id/home"
 
-        android:title="My Profile"/>
+        android:title="Home"/>
+
+    <item android:id="@+id/editProfile"
+
+        android:title="Edit Profile"/>
 
     <item android:id="@+id/myRentals"
 

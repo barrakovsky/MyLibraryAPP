@@ -8,80 +8,35 @@
     android:padding="16dp"
     tools:context=".ControlObjects.MainActivity">
 
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:text="Hello User!"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+    android:id="@+id/userFirstName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="20dp"
+    android:textStyle="bold"
+    android:textColor="@color/colorPrimaryDark"
+    android:layout_marginBottom="25dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/customborder">
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/customborder"
-        android:orientation="vertical">
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:text="Active Rentals"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginBottom="25dp"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Active Rentals"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+    <ListView
+        android:id="@+id/homePageListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Sample Data!"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Sample Data!"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-
-            android:text="Sample Data!"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-
-            android:text="Sample Data!"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-
-            android:text="Sample Data!"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"/>
-    </LinearLayout>
-
+</LinearLayout>
 
 </LinearLayout>

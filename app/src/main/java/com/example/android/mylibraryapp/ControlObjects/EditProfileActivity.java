@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.android.mylibraryapp.R;
 
-public class EditProfileActivity extends AppCompatActivity {
+public class EditProfileActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

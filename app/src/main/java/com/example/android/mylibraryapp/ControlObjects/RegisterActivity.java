@@ -14,11 +14,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.android.mylibraryapp.EntityObjects.User;
 import com.example.android.mylibraryapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -33,9 +40,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     //The entry point of the Firebase Authentication SDK.
     FirebaseAuth firebaseAuth;
-
-    //A Firebase reference that represents a particular location in your Database and can be used for reading or writing data to that Database location
-    DatabaseReference databaseReference;
+    FirebaseFirestore firebaseFirestore;
+    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +59,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Writing to the database
         firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("User");
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
 
         //Event handler when the register button is clicked
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -100,46 +107,51 @@ public class RegisterActivity extends AppCompatActivity {
 
                 //Checking if User Name field is empty
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(RegisterActivity.this, "Please Enter User Name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Please Enter Your Password", Toast.LENGTH_SHORT).show();
                     return;
+                } else if (password.length() < 6) {
+                    Toast.makeText(RegisterActivity.this, "Your password is too week please enter a password more than 6 characters", Toast.LENGTH_SHORT).show();
                 }
 
-                //Creates a new user account with the email and password provided by the user
-                firebaseAuth.createUserWithEmailAndPassword(email,password)
-                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                //Method to test if user sign up is successful
-                                if (task.isSuccessful()) {
+                //Firebase method that creates User account and stores user data in database
+                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful())
+                        {
+                            User information = new User(userName, firstName, lastName, email, phone, false);
 
-                                    //Creating a user instance
-                                    User information = new User(userName, firstName, lastName, email, phone, false);
+                            Toast.makeText(RegisterActivity.this, "Registration Complete", Toast.LENGTH_SHORT).show();
+                            userID = firebaseAuth.getCurrentUser().getUid();
+                            DocumentReference documentReference = firebaseFirestore.collection("Users").document(userID);
+                            Map<String, Object> user = new HashMap<>();
+                            user.put("firstName", information.getfName());
+                            user.put("lastName", information.getlName());
+                            user.put("userName", information.getUserId());
+                            user.put("email", information.getEmail());
+                            user.put("phone", information.getPhone());
+                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(RegisterActivity.this, "Login Successful ! ", Toast.LENGTH_SHORT).show();
 
-                                    //Writes the user data to database
-                                    FirebaseDatabase.getInstance().getReference("User")
-                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                            .setValue(information).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-
-                                            //Toast which displays if registration is successful and redirects user to Quiz activity
-                                            Toast.makeText(RegisterActivity.this, "Registration Complete", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                        }
-                                    });
-
-                                } else {
-
-                                    //Toast displayed if registering user field
-                                    Toast.makeText(RegisterActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
                                 }
-                            }
-                        });
+                            });
+
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        }
+                        else
+                        {
+                            Toast.makeText(RegisterActivity.this, "Error ! " + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
             }
+
         });
 
     }
-
 
     //Function that when clicked reroutes to the login activity
     public void Login(View view)

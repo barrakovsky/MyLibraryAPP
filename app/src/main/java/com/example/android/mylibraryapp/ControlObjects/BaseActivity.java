@@ -1,5 +1,6 @@
 package com.example.android.mylibraryapp.ControlObjects;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,14 +8,23 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.android.mylibraryapp.EntityObjects.Request;
+import com.example.android.mylibraryapp.EntityObjects.User;
 import com.example.android.mylibraryapp.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class BaseActivity extends AppCompatActivity {
@@ -54,9 +64,6 @@ public class BaseActivity extends AppCompatActivity {
         super.setContentView(fullView);
         toolbar = (Toolbar) fullView.findViewById(R.id.tool_bar);
 
-
-
-
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -70,15 +77,36 @@ public class BaseActivity extends AppCompatActivity {
 
                 switch (menuItem.getItemId()) {
 
-                    case R.id.myProfile:
+                    case R.id.home:
                         Intent home = new Intent(BaseActivity.this, MainActivity.class);
                         startActivity(home);
+                        break;
+
+                    case R.id.editProfile:
+                        Intent editProfile = new Intent(BaseActivity.this, EditProfileActivity.class);
+                        startActivity(editProfile);
                         break;
 
                     case R.id.myRentals:
                         Intent rental = new Intent(BaseActivity.this, RentalActivity.class);
                         startActivity(rental);
                         break;
+
+                    case R.id.bookRequest:
+                        Intent bookRequest = new Intent(BaseActivity.this, RequestBookActivity.class);
+                        startActivity(bookRequest);
+                        finish();
+                        break;
+
+                    case R.id.logout:
+                        firebaseAuth.getInstance().signOut();
+                        Intent logout = new Intent(BaseActivity.this, LoginActivity.class);
+                        startActivity(logout);
+                        finish();
+                        break;
+
+
+
 
                     default:
 
@@ -129,5 +157,7 @@ public class BaseActivity extends AppCompatActivity {
         int id = item.getItemId();
         return mDrawerToggle.onOptionsItemSelected(item);
     }
+
+
 }
 

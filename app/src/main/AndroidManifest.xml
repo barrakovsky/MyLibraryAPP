@@ -15,13 +15,13 @@
         <activity android:name=".ControlObjects.RentalActivity" />
         <activity android:name=".ControlObjects.EditProfileActivity" />
         <activity android:name=".ControlObjects.MainActivity" />
-        <activity android:name=".ControlObjects.LoginActivity" />
-        <activity android:name=".ControlObjects.RegisterActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".ControlObjects.RegisterActivity"/>
+        <activity android:name=".ControlObjects.LoginActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
     </application>
 

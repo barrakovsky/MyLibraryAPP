@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.android.mylibraryapp.R;
 
-public class RentalActivity extends AppCompatActivity {
+public class RentalActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
