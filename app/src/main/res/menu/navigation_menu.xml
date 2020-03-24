@@ -5,41 +5,49 @@
 
     <item android:id="@+id/home"
 
-        android:title="Home"/>
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
 
     <item android:id="@+id/editProfile"
 
-        android:title="Edit Profile"/>
+        android:title="Edit Profile"
+        android:icon="@drawable/ic_editprofile"/>
 
     <item android:id="@+id/myRentals"
 
-        android:title="My Rentals"/>
+        android:title="My Rentals"
+        android:icon="@drawable/ic_rental"/>
 
     <item android:id="@+id/bookSearch"
 
 
-        android:title="Search a Book"/>
+        android:title="Search a Book"
+        android:icon="@drawable/ic_search"/>
 
     <item android:id="@+id/bookRequest"
 
 
-        android:title="Request a Book"/>
+        android:title="Request a Book"
+        android:icon="@drawable/ic_requestbook"/>
 
     <item android:id="@+id/myFavorites"
 
 
-        android:title="My Favorites"/>
+        android:title="My Favorites"
+        android:icon="@drawable/ic_favorite"/>
 
     <item android:id="@+id/fees"
 
 
-        android:title="Pay Fees"/>
+        android:title="Pay Fees"
+        android:icon="@drawable/ic_payment"/>
 
 
     <item android:id="@+id/logout"
 
 
-        android:title="Logout"/>
+        android:title="Logout"
+        android:icon="@drawable/ic_logout"/>
 
 
 

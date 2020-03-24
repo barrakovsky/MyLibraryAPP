@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.example.android.mylibraryapp.EntityObjects.User;
 import com.example.android.mylibraryapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -38,7 +40,6 @@ public class MainActivity extends BaseActivity {
 
     TextView userFirstName;
     FirebaseFirestore firebaseFirestore;
-    DocumentReference documentReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,26 +48,24 @@ public class MainActivity extends BaseActivity {
 
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseFirestore.collection("Users").addSnapshotListener(new EventListener<QuerySnapshot>() {
-
+        firebaseFirestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+    .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 arrayList.clear();
                 listView = findViewById(R.id.homePageListView);
-                for (DocumentSnapshot ds : queryDocumentSnapshots) {
+                if (task.isSuccessful() && task.getResult() != null) {
                     //arrayList.add(ds.getString(""));
 
                     userFirstName = findViewById(R.id.userFirstName);
 
                     String firstname;
-                    firstname = ds.getString("firstName");
+                    firstname = task.getResult().getString("firstName");
                     userFirstName.setText("Hello " + firstname);
                 }
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,arrayList);
                 arrayAdapter.notifyDataSetChanged();
                 listView.setAdapter(arrayAdapter);
-
-
             }
         });
     }
