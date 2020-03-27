@@ -14,6 +14,7 @@ public class User {
     private String lName;
     private String email;
     private String phone;
+    private String userName;
     private boolean superUser;
 
     private List<Favorite> favorite;
@@ -21,11 +22,12 @@ public class User {
     private List<Payment> payments;
 
 
-    public User(String userId, String fName, String lName, String email, String phone, boolean superUser){
+    public User(String userId, String fName, String lName, String userName, String email, String phone, boolean superUser){
 
         this.userId = userId;
         this.fName = fName;
         this.lName = lName;
+        this.userName = userName;
         this.email = email;
         this.phone = phone;
         this.superUser = superUser;
@@ -56,6 +58,14 @@ public class User {
 
     public void setfName(String fName) {
         this.fName = fName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 
     public String getEmail() {
@@ -112,6 +122,7 @@ public class User {
                 "userId='" + userId + '\'' +
                 ", fName='" + fName + '\'' +
                 ", lName='" + lName + '\'' +
+                ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", superUser=" + superUser +
