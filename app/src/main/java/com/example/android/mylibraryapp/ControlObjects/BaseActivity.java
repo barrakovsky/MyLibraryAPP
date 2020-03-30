@@ -92,6 +92,12 @@ public class BaseActivity extends AppCompatActivity {
                         startActivity(rental);
                         break;
 
+                    case R.id.bookSearch:
+                        Intent searchBook = new Intent(BaseActivity.this, SearchResultsActivity.class);
+                        startActivity(searchBook);
+                        finish();
+                        break;
+
                     case R.id.bookRequest:
                         Intent bookRequest = new Intent(BaseActivity.this, RequestBookActivity.class);
                         startActivity(bookRequest);
