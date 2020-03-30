@@ -1,36 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/searchResults"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="15dp"
-        android:text="Search"
-        android:textAlignment="center"
-        android:textColor="#00574B"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ControlObjects.SearchResultsActivity">
 
     <SearchView
-        android:id="@+id/searchBook"
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search"
-        android:layout_below="@+id/searchResults"/>
+        android:layout_height="wrap_content"/>
 
-    <ListView
-        android:id="@+id/searchResultsList"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:layout_below="@+id/searchBook"/>
+        android:layout_below="@id/search_view"/>
 
 </RelativeLayout>
