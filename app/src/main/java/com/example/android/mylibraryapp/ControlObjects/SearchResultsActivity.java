@@ -1,15 +1,18 @@
 package com.example.android.mylibraryapp.ControlObjects;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.android.mylibraryapp.EntityObjects.Book;
 import com.example.android.mylibraryapp.Misc.BookAdapter;
 import com.example.android.mylibraryapp.R;
-//import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -18,17 +21,18 @@ public class SearchResultsActivity extends BaseActivity {
     private CollectionReference bookRef = db.collection("Book");
 
     private BookAdapter adapter;
+    private RecyclerView recyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
 
-        //setUpRecyclerView();
+        setUpRecyclerView();
     }
 
-    /*private void setUpRecyclerView() {
-        Query query = bookRef.orderBy("title", Query.Direction.DESCENDING);
+    private void setUpRecyclerView() {
+        Query query = bookRef.orderBy("title", Query.Direction.ASCENDING);
 
         FirestoreRecyclerOptions<Book> option = new FirestoreRecyclerOptions.Builder<Book>()
                 .setQuery(query, Book.class)
@@ -36,10 +40,19 @@ public class SearchResultsActivity extends BaseActivity {
 
         adapter = new BookAdapter(option);
 
-        RecyclerView recyclerView = findViewById(R.id.search_list);
-        recyclerView.setHasFixedSize(true);
+        recyclerView = findViewById(R.id.search_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new BookAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                Book book = documentSnapshot.toObject(Book.class);
+                Intent intent = new Intent(getApplicationContext(), ViewBookInfoActivity.class);
+                intent.putExtra("Book", book);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -53,6 +66,4 @@ public class SearchResultsActivity extends BaseActivity {
         super.onStop();
         adapter.stopListening();
     }
-
-     */
 }
