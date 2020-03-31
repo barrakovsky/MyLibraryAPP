@@ -1,18 +1,59 @@
 package com.example.android.mylibraryapp.EntityObjects;
 
-import java.time.Year;
+import java.io.Serializable;
 
-public class Book {
-    private String author;
+public class Book implements Serializable {
+    private String author = "N/A";
     private int availableQty;
-    private String genre;
+    private String genre = "N/A";
     private long isbn;
     private int numberOfPages;
-    private String publisher;
+    private String publisher = "N/A";
     private int publishingYear;
-    private String summary;
+    private String summary = "N/A";
     private String title;
     private int totQty;
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setAvailableQty(int availableQty) {
+        this.availableQty = availableQty;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setIsbn(long isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setNumberOfPages(int numberOfPages) {
+        this.numberOfPages = numberOfPages;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public void setPublishingYear(int publishingYear) {
+        this.publishingYear = publishingYear;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setTotQty(int totQty) {
+        this.totQty = totQty;
+    }
+
 
     public long getIsbn() {
         return isbn;
