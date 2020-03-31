@@ -18,117 +18,139 @@
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/editProfileUserName"
+        android:id="@+id/textViewUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="100dp"
         android:text="User Name: "
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp" />
 
     <EditText
+        android:id="@+id/editTextUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/editProfileUserName"
-        android:layout_marginTop="120dp"
+        android:layout_toRightOf="@id/textViewUserName"
+        android:layout_marginTop="90dp"
         android:hint="User Name"
         android:inputType="text"/>
 
     <TextView
-        android:id="@+id/editProfileFirstName"
+        android:id="@+id/textViewFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="First Name: "
         android:textColor="@color/colorPrimaryDark"
-        android:layout_below="@id/editProfileUserName"
+        android:layout_below="@id/textViewUserName"
         android:textSize="20sp" />
 
     <EditText
+        android:id="@+id/editTextFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/editProfileFirstName"
-        android:layout_below="@id/editProfileUserName"
-        android:layout_marginTop="55dp"
+        android:layout_toRightOf="@id/textViewFirstName"
+        android:layout_below="@id/editTextUserName"
+        android:layout_marginTop="45dp"
         android:hint="First Name"
         android:inputType="text"/>
 
     <TextView
-        android:id="@+id/editProfileLastName"
+        android:id="@+id/textViewLastName"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:layout_below="@id/editProfileFirstName"
-        android:layout_marginTop="65dp"
+        android:layout_below="@id/textViewFirstName"
+        android:layout_marginTop="45dp"
         android:text="Last Name: "
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp" />
 
     <EditText
+        android:id="@+id/editTextLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/editProfileLastName"
-        android:layout_below="@id/editProfileFirstName"
-        android:layout_marginTop="58dp"
+        android:layout_toRightOf="@id/textViewLastName"
+        android:layout_below="@id/editTextFirstName"
+        android:layout_marginTop="30dp"
         android:hint="Last Name"
         android:inputType="text"/>
 
     <TextView
-        android:id="@+id/editProfilePassword"
+        android:id="@+id/textViewEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@id/textViewLastName"
+        android:layout_marginTop="45dp"
+        android:text="Email: "
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="305dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextLastName"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@id/textViewEmail"
+        android:hint="Email"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/textViewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editProfileLastName"
-        android:layout_marginTop="60dp"
+        android:layout_below="@id/textViewEmail"
+        android:layout_marginTop="30dp"
         android:text="Password: "
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp" />
 
     <EditText
+        android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editProfileLastName"
+        android:layout_below="@id/editTextLastName"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="95dp"
         android:hint="Password"
-        android:layout_toRightOf="@id/editProfilePassword"
+        android:layout_toRightOf="@id/textViewPassword"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/textViewPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewPassword"
+        android:layout_marginTop="45dp"
+        android:text="Phone #:"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPassword"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+
+        android:hint="Phone Number"
+        android:layout_toRightOf="@id/textViewPhone"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/editButton"
+        android:id="@+id/saveDataButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editProfilePassword"
+        android:layout_below="@+id/editTextPhone"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/button_background"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="Edit"
-        android:textColor="@android:color/white"
-        android:visibility="visible"/>
-
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editProfilePassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/button_background"
         android:backgroundTint="@color/colorPrimary"
         android:text="Save"
         android:textColor="@android:color/white"
-        android:visibility="invisible"/>
+        android:visibility="visible"/>
 
-    <Button
-        android:id="@+id/cancelButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/saveButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
-        android:background="@drawable/button_background"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="Cancel"
-        android:textColor="@android:color/white"
-        android:visibility="invisible"/>
 
 </RelativeLayout>
