@@ -19,6 +19,7 @@
         <activity android:name=".ControlObjects.RegisterActivity" />
         <activity android:name=".ControlObjects.SearchResultsActivity" />
         <activity android:name=".ControlObjects.RequestBookActivity"/>
+        <activity android:name=".ControlObjects.ViewBookInfoActivity"/>
         <activity android:name=".ControlObjects.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
