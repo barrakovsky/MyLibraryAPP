@@ -74,17 +74,18 @@ public class EditProfileActivity extends BaseActivity {
                     String userName;
                     String email;
                     String phone;
+                    String password;
                     firstName = task.getResult().getString("firstName");
                     lastName  = task.getResult().getString("lastName");
                     userName  = task.getResult().getString("userName");
                     email     = task.getResult().getString("email");
                     phone     = task.getResult().getString("phone");
 
-                    firstName_editText.setHint(firstName);
-                    lastName_editText.setHint(lastName);
-                    userName_editText.setHint(userName);
-                    email_editText.setHint(email);
-                    phoneNumber_editText.setHint(phone);
+                    firstName_editText.setText(firstName);
+                    lastName_editText.setText(lastName);
+                    userName_editText.setText(userName);
+                    email_editText.setText(email);
+                    phoneNumber_editText.setText(phone);
                 }
             }
 

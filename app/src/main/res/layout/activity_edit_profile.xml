@@ -138,7 +138,7 @@
 
         android:textColorHint="@color/design_default_color_on_secondary"
         android:layout_toRightOf="@id/textViewPhone"
-        android:inputType="textPassword" />
+        android:inputType="phone" />
 
     <Button
         android:id="@+id/saveDataButton"
@@ -146,7 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextPhone"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button_background"
         android:backgroundTint="@color/colorPrimary"
         android:text="Save"
