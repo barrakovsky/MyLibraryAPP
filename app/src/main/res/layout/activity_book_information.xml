@@ -22,6 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/bookImage"
+            android:layout_toLeftOf="@id/bookInfoFavorite"
+            android:layout_alignParentLeft="true"
             android:hint="Book Title"
             android:textStyle="bold"
             android:textSize="30sp" />
@@ -81,5 +83,19 @@
             android:layout_below="@id/bookInfoSummary"
             android:hint="Available Quantity"
             android:textSize="25sp" />
+
+        <CheckBox
+            android:id="@+id/bookInfoFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bookImage"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:button="@drawable/favorite" />
     </RelativeLayout>
 </ScrollView>
