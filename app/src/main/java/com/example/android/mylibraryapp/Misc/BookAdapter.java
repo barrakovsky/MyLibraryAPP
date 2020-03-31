@@ -9,6 +9,7 @@ import com.example.android.mylibraryapp.EntityObjects.Book;
 import com.example.android.mylibraryapp.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.List;
 import android.content.Context;
@@ -18,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class BookAdapter extends FirestoreRecyclerAdapter<Book, BookAdapter.BookHolder> {
+
+    OnItemClickListener listener;
 
     public BookAdapter(@NonNull FirestoreRecyclerOptions<Book> options) {
         super(options);
@@ -39,21 +42,31 @@ public class BookAdapter extends FirestoreRecyclerAdapter<Book, BookAdapter.Book
 
     class BookHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle
-                ,textViewAuthor
-                ,textViewPublisher
-                ,textViewYear
-                ,textViewGenre
-                ,textViewAvailable
-                ,textViewTotal
-                ,textViewIsbn
-                ,textViewSummary
-                ,textViewPages;
+                ,textViewAuthor;
 
         public BookHolder(@NonNull View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.book_item_title);
             textViewAuthor = itemView.findViewById(R.id.book_item_author);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
 }
