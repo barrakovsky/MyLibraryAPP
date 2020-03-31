@@ -9,9 +9,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.android.mylibraryapp.EntityObjects.Request;
 import com.example.android.mylibraryapp.R;
 
-public class RequestBookActivity extends AppCompatActivity {
+public class RequestBookActivity extends BaseActivity {
 
     private EditText requestTitle, requestAuthor, requestISBN, requestGenre, requestPublisher, requestYear;
     private Button requestSubmit;
@@ -71,7 +72,7 @@ public class RequestBookActivity extends AppCompatActivity {
         }
 
         //create a new request object
-        int ISBN = 0;
+        long ISBN = 0;
         int year = 0;
         String title = requestTitle.getText().toString().trim();
         String author = requestAuthor.getText().toString().trim();
@@ -85,7 +86,7 @@ public class RequestBookActivity extends AppCompatActivity {
         if (!"".equals(tempYear)) {//if field is left empty year is 0
             year = Integer.parseInt(tempYear);
         }
-        //Request add = new Request(ISBN, title, author, year, genre, publisher);
+        Request add = new Request(ISBN, title, author, year, genre, publisher);
 
         String message = "Request submitted";
 
