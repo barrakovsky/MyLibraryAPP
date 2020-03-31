@@ -97,32 +97,15 @@
         android:textColorHint="@color/design_default_color_on_secondary"
         android:inputType="text" />
 
-    <TextView
-        android:id="@+id/textViewPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewEmail"
-        android:layout_marginTop="30dp"
-        android:text="Password: "
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextLastName"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="95dp"
-        android:textColorHint="@color/design_default_color_on_secondary"
-        android:layout_toRightOf="@id/textViewPassword"
-        android:inputType="textPassword" />
+
+
 
     <TextView
         android:id="@+id/textViewPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textViewPassword"
+        android:layout_below="@id/textViewEmail"
         android:layout_marginTop="45dp"
         android:text="Phone #:"
         android:textColor="@color/colorPrimaryDark"
@@ -132,7 +115,7 @@
         android:id="@+id/editTextPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextPassword"
+        android:layout_below="@id/editTextEmail"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
 
@@ -152,6 +135,18 @@
         android:text="Save"
         android:textColor="@android:color/white"
         android:visibility="visible"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/saveDataButton"
+        android:layout_marginTop="30dp"
+        android:text="Click Here To Change Password"
+        android:textColor="@color/colorPrimary"
+        android:layout_centerHorizontal="true"
+        android:onClick="changePassword"
+
+        />
 
 
 </RelativeLayout>

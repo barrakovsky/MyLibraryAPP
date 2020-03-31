@@ -3,6 +3,7 @@ package com.example.android.mylibraryapp.ControlObjects;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,7 @@ public class EditProfileActivity extends BaseActivity {
     String userID = Long.toString(System.currentTimeMillis());
 
 
+
     EditText firstName_editText;
     EditText lastName_editText;
     EditText userName_editText;
@@ -44,13 +46,14 @@ public class EditProfileActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
         //Casting Views
         firstName_editText = findViewById(R.id.editTextFirstName);
         lastName_editText = findViewById(R.id.editTextLastName);
         userName_editText = findViewById(R.id.editTextUserName);
         phoneNumber_editText = findViewById(R.id.editTextPhone);
         email_editText = findViewById(R.id.editTextEmail);
-        password_editText = findViewById(R.id.editTextPassword);
         saveButton = findViewById(R.id.saveDataButton);
 
 
@@ -74,18 +77,20 @@ public class EditProfileActivity extends BaseActivity {
                     String userName;
                     String email;
                     String phone;
-                    String password;
                     firstName = task.getResult().getString("firstName");
                     lastName  = task.getResult().getString("lastName");
                     userName  = task.getResult().getString("userName");
                     email     = task.getResult().getString("email");
                     phone     = task.getResult().getString("phone");
 
+
                     firstName_editText.setText(firstName);
                     lastName_editText.setText(lastName);
                     userName_editText.setText(userName);
                     email_editText.setText(email);
                     phoneNumber_editText.setText(phone);
+
+
                 }
             }
 
@@ -93,16 +98,15 @@ public class EditProfileActivity extends BaseActivity {
         });
 
 
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 final String firstName = firstName_editText.getText().toString();
                 final String lastName = lastName_editText.getText().toString();
                 final String userName = userName_editText.getText().toString();
                 final String phone = phoneNumber_editText.getText().toString();
                 final String email = email_editText.getText().toString();
-
 
                 final User information = new User(userID, firstName, lastName, userName, email, phone, false);
 
@@ -124,5 +128,15 @@ public class EditProfileActivity extends BaseActivity {
                 });
             }
         });
+
     }
+
+    public void changePassword(View view) {
+        //Intent to register form
+        Intent password = new Intent(EditProfileActivity.this, changePasswordActivity.class);
+        startActivity(password);
+    }
+
+
+
 }
