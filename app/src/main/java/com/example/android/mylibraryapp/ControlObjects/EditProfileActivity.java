@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.mylibraryapp.EntityObjects.User;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class EditProfileActivity extends BaseActivity {
@@ -52,15 +54,43 @@ public class EditProfileActivity extends BaseActivity {
         saveButton = findViewById(R.id.saveDataButton);
 
 
-
         //Writing to the database
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
 
-
         uid = firebaseAuth.getCurrentUser().getUid();
         final DocumentReference documentReference = firebaseFirestore.collection("Users").document(uid);
+
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseFirestore.collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful() && task.getResult() != null) {
+
+                    String firstName;
+                    String lastName;
+                    String userName;
+                    String email;
+                    String phone;
+                    firstName = task.getResult().getString("firstName");
+                    lastName  = task.getResult().getString("lastName");
+                    userName  = task.getResult().getString("userName");
+                    email     = task.getResult().getString("email");
+                    phone     = task.getResult().getString("phone");
+
+                    firstName_editText.setHint(firstName);
+                    lastName_editText.setHint(lastName);
+                    userName_editText.setHint(userName);
+                    email_editText.setHint(email);
+                    phoneNumber_editText.setHint(phone);
+                }
+            }
+
+            ;
+        });
+
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +101,7 @@ public class EditProfileActivity extends BaseActivity {
                 final String userName = userName_editText.getText().toString();
                 final String phone = phoneNumber_editText.getText().toString();
                 final String email = email_editText.getText().toString();
+
 
                 final User information = new User(userID, firstName, lastName, userName, email, phone, false);
 
@@ -84,8 +115,7 @@ public class EditProfileActivity extends BaseActivity {
                 ).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
+                        if (task.isSuccessful()) {
                             Toast.makeText(EditProfileActivity.this, "Information Updated", Toast.LENGTH_SHORT).show();
 
                         }

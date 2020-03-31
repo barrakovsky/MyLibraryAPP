@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/textViewUserName"
         android:layout_marginTop="90dp"
-        android:hint="User Name"
+        android:textColorHint="@color/design_default_color_on_secondary"
         android:inputType="text"/>
 
     <TextView
@@ -43,6 +43,7 @@
         android:text="First Name: "
         android:textColor="@color/colorPrimaryDark"
         android:layout_below="@id/textViewUserName"
+
         android:textSize="20sp" />
 
     <EditText
@@ -52,7 +53,7 @@
         android:layout_toRightOf="@id/textViewFirstName"
         android:layout_below="@id/editTextUserName"
         android:layout_marginTop="45dp"
-        android:hint="First Name"
+        android:textColorHint="@color/design_default_color_on_secondary"
         android:inputType="text"/>
 
     <TextView
@@ -72,7 +73,7 @@
         android:layout_toRightOf="@id/textViewLastName"
         android:layout_below="@id/editTextFirstName"
         android:layout_marginTop="30dp"
-        android:hint="Last Name"
+        android:textColorHint="@color/design_default_color_on_secondary"
         android:inputType="text"/>
 
     <TextView
@@ -93,7 +94,7 @@
         android:layout_marginLeft="46dp"
         android:layout_marginTop="30dp"
         android:layout_toRightOf="@id/textViewEmail"
-        android:hint="Email"
+        android:textColorHint="@color/design_default_color_on_secondary"
         android:inputType="text" />
 
     <TextView
@@ -113,7 +114,7 @@
         android:layout_below="@id/editTextLastName"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="95dp"
-        android:hint="Password"
+        android:textColorHint="@color/design_default_color_on_secondary"
         android:layout_toRightOf="@id/textViewPassword"
         android:inputType="textPassword" />
 
@@ -135,7 +136,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
 
-        android:hint="Phone Number"
+        android:textColorHint="@color/design_default_color_on_secondary"
         android:layout_toRightOf="@id/textViewPhone"
         android:inputType="textPassword" />
 
