@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/book_cover"
+            android:layout_toLeftOf="@id/item_favorite"
             android:text="Title"
             android:textSize="24sp"
             android:textStyle="bold"/>
@@ -37,6 +38,15 @@
             android:layout_height="50dp"
             android:layout_margin="5dp"
             app:srcCompat="@drawable/no_image_available" />
+
+        <CheckBox
+            android:id="@+id/item_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_alignBaseline="@id/book_item_title"
+            android:layout_alignParentEnd="true"
+            android:button="@drawable/favorite" />
 
     </RelativeLayout>
 
