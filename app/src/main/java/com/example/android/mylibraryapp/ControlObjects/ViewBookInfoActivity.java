@@ -32,13 +32,33 @@ public class ViewBookInfoActivity extends BaseActivity {
 
         Book book = (Book)getIntent().getSerializableExtra("Book");
 
+        //set book information
         title.setText(book.getTitle());
         author.setText(book.getAuthor());
-        isbn.setText(Long.toString(book.getIsbn()));
-        genre.setText("Genre: " + book.getGenre());
-        summary.setText("\"" + book.getSummary() + "\"");
-        publishing.setText("Published by " + book.getPublisher() + ", " + book.getPublishingYear());
-        pages.setText(book.getNumberOfPages() + " pages");
+        if (book.getIsbn() == 0)
+            isbn.setText("ISBN: N/A");
+        else
+            isbn.setText("ISBN: " + book.getIsbn());
+        if (book.getGenre() == "")
+            genre.setText("Genre: N/A");
+        else
+            genre.setText("Genre: " + book.getGenre());
+        if (book.getSummary() == "")
+            summary.setText("Summary: N/A");
+        else
+            summary.setText("Summary: \"" + book.getSummary() + "\"");
+        if (book.getPublishingYear() == 0 && book.getPublisher() == "")
+            publishing.setText("Publisher: N/A  Year: N/A");
+        else if (book.getPublisher() == "")
+            publishing.setText("Publisher: N/A  Year: " + book.getPublishingYear());
+        else if (book.getPublishingYear() == 0)
+            publishing.setText("Publisher: " + book.getPublisher() + "  Year: N/A");
+        else
+            publishing.setText("Publisher: " + book.getPublisher() + "  Year: " + book.getPublishingYear());
+        if (book.getNumberOfPages() == 0)
+            pages.setText("Number of pages: N/A");
+        else
+            pages.setText(book.getNumberOfPages() + " pages");
         quantity.setText(book.getAvailableQty() + "/" + book.getTotQty() + " copies available");
     }
 }
