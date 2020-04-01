@@ -2,20 +2,27 @@ package com.example.android.mylibraryapp.ControlObjects;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android.mylibraryapp.EntityObjects.Request;
 import com.example.android.mylibraryapp.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RequestBookActivity extends BaseActivity {
 
     private EditText requestTitle, requestAuthor, requestISBN, requestGenre, requestPublisher, requestYear;
     private Button requestSubmit;
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +96,21 @@ public class RequestBookActivity extends BaseActivity {
         Request add = new Request(ISBN, title, author, year, genre, publisher);
 
         String message = "Request submitted";
+
+        //add to firestore
+        db.collection("Requests").document()
+                .set(add)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("Request", "DocumentSnapshot successfully written");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w("Request", "Error writing document", e);
+            }
+        });
 
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
