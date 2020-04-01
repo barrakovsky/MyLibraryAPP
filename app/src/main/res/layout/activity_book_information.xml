@@ -97,5 +97,43 @@
             android:scaleX="1.5"
             android:scaleY="1.5"
             android:button="@drawable/favorite" />
+
+        <Button
+            android:id="@+id/place_hold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookInfoQty"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#009688"
+            android:text="Place Hold" />
+
+        <Button
+            android:id="@+id/add_waitlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookInfoQty"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#009688"
+            android:text="Place Hold"
+            android:clickable="false"
+            android:visibility="invisible"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_review"
+            android:text="Add a review"
+            android:backgroundTint="#009688"
+            android:layout_below="@id/bookInfoQty"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reviews_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/add_review"/>
+
     </RelativeLayout>
+
 </ScrollView>
