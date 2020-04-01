@@ -3,6 +3,15 @@
     <string name="Open">open</string>
     <string name="Close">close</string>
 
+    <!-- Review Activity -->
+    <string name="review_book_header">Review Book</string>
+    <string name="review_book_cover">Book Cover</string>
+    <string name="review_book_title">Title</string>
+    <string name="review_book_author">Author</string>
+    <string name="review_book_prompt">Write review:</string>
+    <string name="review_book_button">Submit</string>
+    <string name="review_book_hint">My thoughts on this book are…</string>
+
     <!-- Edit Book Details Activity -->
     <string name="edit_book_details_header">Edit Book Details</string>
     <string name="edit_ISBN_label">ISBN: </string>
