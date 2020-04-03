@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ControlObjects.changePasswordActivity"></activity>
+        <activity android:name=".ControlObjects.ReviewActivity" />
+        <activity android:name=".ControlObjects.changePasswordActivity" />
         <activity android:name=".ControlObjects.EditBookDetailsActivity" />
         <activity android:name=".ControlObjects.BaseActivity" />
         <activity android:name=".ControlObjects.RentalHistoryActivity" />

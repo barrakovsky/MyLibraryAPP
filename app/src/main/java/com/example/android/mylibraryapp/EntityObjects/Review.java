@@ -4,14 +4,20 @@ public class Review {
 
     private String reviewID;
     private String review;
-    private User user;
+    private String userID;
 
-    public User getUser() {
-        return user;
+    public Review(String reviewID, String userID, String review) {
+        this.reviewID = reviewID;
+        this.userID = userID;
+        this.review = review;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getReviewID() {
@@ -30,9 +36,4 @@ public class Review {
         this.review = review;
     }
 
-    public Review(String reviewID, String review, User user) {
-        this.reviewID = reviewID;
-        this.review = review;
-        this.user = user;
-    }
 }

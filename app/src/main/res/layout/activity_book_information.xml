@@ -121,18 +121,19 @@
             android:visibility="invisible"/>
 
         <Button
+            android:id="@+id/add_review_but"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/add_review"
-            android:text="Add a review"
+            android:layout_below="@id/bookInfoQty"
             android:backgroundTint="#009688"
-            android:layout_below="@id/bookInfoQty"/>
+            android:onClick="AddReview"
+            android:text="Add a review" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reviews_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/add_review"/>
+            android:layout_below="@id/add_review_but"/>
 
     </RelativeLayout>
 

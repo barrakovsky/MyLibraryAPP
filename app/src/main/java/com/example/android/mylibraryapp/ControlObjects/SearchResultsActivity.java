@@ -50,6 +50,8 @@ public class SearchResultsActivity extends BaseActivity {
                 Book book = documentSnapshot.toObject(Book.class);
                 Intent intent = new Intent(getApplicationContext(), ViewBookInfoActivity.class);
                 intent.putExtra("Book", book);
+                intent.putExtra("bookID", documentSnapshot.getId());
+
                 startActivity(intent);
             }
         });
