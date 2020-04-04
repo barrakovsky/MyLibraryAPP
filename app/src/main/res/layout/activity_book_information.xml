@@ -6,8 +6,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="10dp">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/bookImage"
@@ -22,11 +21,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/bookImage"
-            android:layout_toLeftOf="@id/bookInfoFavorite"
             android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/bookInfoFavorite"
             android:hint="Book Title"
-            android:textStyle="bold"
-            android:textSize="30sp" />
+            android:paddingLeft="10sp"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/bookInfoAuthor"
@@ -34,15 +34,17 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/bookInfoTitle"
             android:hint="Book Author"
+            android:paddingLeft="10sp"
             android:textSize="25sp" />
 
         <TextView
+            android:id="@+id/bookInfoIsbn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/bookInfoIsbn"
             android:layout_below="@id/bookInfoAuthor"
             android:hint="Book ISBN"
-            android:textSize="15dp"/>
+            android:paddingLeft="10sp"
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/bookInfoGenre"
@@ -50,7 +52,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/bookInfoIsbn"
             android:hint="Book Genre"
-            android:textSize="20sp"/>
+            android:paddingLeft="10sp"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/bookInfoSummary"
@@ -58,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/bookInfoPages"
             android:hint="Book Summary"
+            android:paddingLeft="10sp"
             android:textSize="25sp" />
 
         <TextView
@@ -65,16 +69,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/bookInfoGenre"
-            android:textSize="20dp"
-            android:hint="Publishing"/>
+            android:hint="Publishing"
+            android:paddingLeft="10sp"
+            android:textSize="20dp" />
 
         <TextView
+            android:id="@+id/bookInfoPages"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/bookInfoPages"
             android:layout_below="@id/bookInfoPublishing"
-            android:textSize="15dp"
-            android:hint="Number of Pages"/>
+            android:hint="Number of Pages"
+            android:paddingLeft="10sp"
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/bookInfoQty"
@@ -82,6 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/bookInfoSummary"
             android:hint="Available Quantity"
+            android:paddingLeft="10sp"
             android:textSize="25sp" />
 
         <CheckBox
@@ -91,12 +98,12 @@
             android:layout_below="@id/bookImage"
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
+            android:button="@drawable/favorite"
             android:scaleX="1.5"
-            android:scaleY="1.5"
-            android:button="@drawable/favorite" />
+            android:scaleY="1.5" />
 
         <Button
             android:id="@+id/place_hold"
@@ -106,19 +113,8 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="10dp"
             android:backgroundTint="#009688"
-            android:text="Place Hold" />
-
-        <Button
-            android:id="@+id/add_waitlist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/bookInfoQty"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:backgroundTint="#009688"
             android:text="Place Hold"
-            android:clickable="false"
-            android:visibility="invisible"/>
+            android:textColor="@color/lightText" />
 
         <Button
             android:id="@+id/add_review_but"
@@ -127,13 +123,28 @@
             android:layout_below="@id/bookInfoQty"
             android:backgroundTint="#009688"
             android:onClick="AddReview"
-            android:text="Add a review" />
+            android:text="Add a review"
+            android:textColor="@color/lightText" />
+
+        <TextView
+            android:id="@+id/book_info_rev_head_tx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/add_review_but"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8sp"
+            android:layout_marginBottom="8sp"
+            android:text="@string/book_info_review"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reviews_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/add_review_but"/>
+            android:layout_below="@id/book_info_rev_head_tx"
+            android:paddingStart="10sp"
+            android:paddingEnd="10sp" />
 
     </RelativeLayout>
 

@@ -3,6 +3,9 @@
     <string name="Open">open</string>
     <string name="Close">close</string>
 
+    <!-- Book Info Activity -->
+    <string name="book_info_review">Read Reviews:</string>
+
     <!-- Review Activity -->
     <string name="review_book_header">Review Book</string>
     <string name="review_book_cover">Book Cover</string>

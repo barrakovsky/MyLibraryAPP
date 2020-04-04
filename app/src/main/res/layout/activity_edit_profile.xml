@@ -7,15 +7,16 @@
     tools:context=".ControlObjects.EditProfileActivity">
 
     <TextView
+        style="@style/Header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit Profile"
-        android:textColor="@color/colorPrimaryDark"
         android:layout_alignParentRight="true"
         android:layout_marginTop="25dp"
         android:layout_marginRight="30dp"
-        android:textStyle="bold"
-        android:textSize="30sp" />
+        android:text="Edit Profile"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewUserName"

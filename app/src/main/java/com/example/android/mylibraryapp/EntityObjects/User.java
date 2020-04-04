@@ -21,6 +21,9 @@ public class User {
     private List<Rental> rentals;
     private List<Payment> payments;
 
+    public User() {
+        // empty constructor
+    }
 
     public User(String userId, String fName, String lName, String userName, String email, String phone, boolean superUser){
 

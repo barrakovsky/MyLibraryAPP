@@ -6,22 +6,41 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.android.mylibraryapp.EntityObjects.Book;
+import com.example.android.mylibraryapp.EntityObjects.Review;
+import com.example.android.mylibraryapp.Misc.BookAdapter;
+import com.example.android.mylibraryapp.Misc.ReviewAdapter;
 import com.example.android.mylibraryapp.R;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 public class ViewBookInfoActivity extends BaseActivity {
 
-    Book book;
-    String bookID;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference reviewRef;
 
-    TextView title;
-    TextView author;
-    TextView isbn;
-    TextView genre;
-    TextView summary;
-    TextView publishing;
-    TextView pages;
-    TextView quantity;
+    private ReviewAdapter adapter;
+    private RecyclerView recyclerView;
+
+    private Book book;
+    private String bookID;
+
+    private TextView title;
+    private TextView author;
+    private TextView isbn;
+    private TextView genre;
+    private TextView summary;
+    private TextView publishing;
+    private TextView pages;
+    private TextView quantity;
+
+    private TextView reviewHead;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +58,8 @@ public class ViewBookInfoActivity extends BaseActivity {
 
         book = (Book)getIntent().getSerializableExtra("Book");
         bookID = getIntent().getStringExtra("bookID");
+
+        reviewRef = db.collection("Book").document(bookID).collection("Reviews");
 
         //set book information
         title.setText(book.getTitle());
@@ -69,8 +90,10 @@ public class ViewBookInfoActivity extends BaseActivity {
             pages.setText(book.getNumberOfPages() + " pages");
         quantity.setText(book.getAvailableQty() + "/" + book.getTotQty() + " copies available");
 
+        reviewHead = findViewById(R.id.book_info_rev_head_tx);
+        reviewHead.setText(String.format("Read reviews about %s:", book.getTitle()));
 
-
+        setUpRecyclerView();
     }
 
     public void AddReview(View v) {
@@ -79,5 +102,40 @@ public class ViewBookInfoActivity extends BaseActivity {
         addRev.putExtra("Book", book);
         startActivity(addRev);
     }
+
+    // TODO: Fix up for reviews
+    private void setUpRecyclerView() {
+        Query query = reviewRef.orderBy("date", Query.Direction.DESCENDING);
+
+        FirestoreRecyclerOptions<Review> option = new FirestoreRecyclerOptions.Builder<Review>()
+                .setQuery(query, Review.class)
+                .build();
+
+        adapter = new ReviewAdapter(option);
+
+        recyclerView = findViewById(R.id.reviews_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new ReviewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
 
 }
