@@ -3,7 +3,6 @@ package com.example.android.mylibraryapp.ControlObjects;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,9 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.mylibraryapp.EntityObjects.Book;
 import com.example.android.mylibraryapp.EntityObjects.Review;
-import com.example.android.mylibraryapp.Misc.BookAdapter;
 import com.example.android.mylibraryapp.Misc.ReviewAdapter;
 import com.example.android.mylibraryapp.R;
+
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -26,7 +25,6 @@ public class ViewBookInfoActivity extends BaseActivity {
     private CollectionReference reviewRef;
 
     private ReviewAdapter adapter;
-    private RecyclerView recyclerView;
 
     private Book book;
     private String bookID;
@@ -39,8 +37,6 @@ public class ViewBookInfoActivity extends BaseActivity {
     private TextView publishing;
     private TextView pages;
     private TextView quantity;
-
-    private TextView reviewHead;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,9 +86,9 @@ public class ViewBookInfoActivity extends BaseActivity {
             pages.setText(book.getNumberOfPages() + " pages");
         quantity.setText(book.getAvailableQty() + "/" + book.getTotQty() + " copies available");
 
-        reviewHead = findViewById(R.id.book_info_rev_head_tx);
+        // Setting up reviews at bottom of page
+        TextView reviewHead = findViewById(R.id.book_info_rev_head_tx);
         reviewHead.setText(String.format("Read reviews about %s:", book.getTitle()));
-
         setUpRecyclerView();
     }
 
@@ -103,7 +99,6 @@ public class ViewBookInfoActivity extends BaseActivity {
         startActivity(addRev);
     }
 
-    // TODO: Fix up for reviews
     private void setUpRecyclerView() {
         Query query = reviewRef.orderBy("date", Query.Direction.DESCENDING);
 
@@ -113,16 +108,9 @@ public class ViewBookInfoActivity extends BaseActivity {
 
         adapter = new ReviewAdapter(option);
 
-        recyclerView = findViewById(R.id.reviews_list);
+        RecyclerView recyclerView = findViewById(R.id.reviews_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(new ReviewAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-
-            }
-        });
     }
 
     @Override
