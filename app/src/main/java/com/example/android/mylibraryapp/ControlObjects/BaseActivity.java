@@ -103,6 +103,12 @@ public class BaseActivity extends AppCompatActivity {
                         startActivity(bookRequest);
                         finish();
                         break;
+                        
+                    case R.id.myFavorites:
+                    Intent favorites = new Intent(BaseActivity.this, ViewFavoritesActivity.class);
+                    startActivity(favorites);
+                    finish();
+                    break;
 
                     case R.id.logout:
                         firebaseAuth.getInstance().signOut();
