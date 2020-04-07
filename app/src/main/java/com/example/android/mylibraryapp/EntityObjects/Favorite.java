@@ -1,31 +1,46 @@
 package com.example.android.mylibraryapp.EntityObjects;
 
+import com.google.firebase.firestore.DocumentReference;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Favorite {
-    private List<Book> favoriteBooks;
-    private User user;
-    public List<Book> getFavoriteBooks() {
-        return favoriteBooks;
+    private DocumentReference bookRef;
+    private String title;
+    private String author;
+
+    public Favorite() {
+        //empty constructor
     }
-    public void setFavorites(List<Book> favoriteBooks) {
-        this.favoriteBooks = favoriteBooks;
+
+    public Favorite(DocumentReference bookRef, String title, String author) {
+        this.bookRef = bookRef;
+        this.title = title;
+        this.author = author;
     }
-    public User getUser() {
-        return user;
+
+    public DocumentReference getBookRef() {
+        return bookRef;
     }
-    public void setUser(User user) {
-        this.user = user;
+
+    public void setBookRef(DocumentReference bookRef) {
+        this.bookRef = bookRef;
     }
-    public Favorite(User user) {
-        this.user = user;
-        this.favoriteBooks = new ArrayList<Book>();
+
+    public String getTitle() {
+        return title;
     }
-    public void addFavorite(Book book) {
-        favoriteBooks.add(book);
+
+    public void setTitle(String title) {
+        this.title = title;
     }
-    public void removeFavorite(Book book) {
-        favoriteBooks.remove(book);
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
