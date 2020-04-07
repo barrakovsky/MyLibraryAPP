@@ -1,18 +1,13 @@
 package com.example.android.mylibraryapp.Misc;
 
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import com.example.android.mylibraryapp.EntityObjects.Book;
 import com.example.android.mylibraryapp.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
-
-import java.util.List;
-import android.content.Context;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
