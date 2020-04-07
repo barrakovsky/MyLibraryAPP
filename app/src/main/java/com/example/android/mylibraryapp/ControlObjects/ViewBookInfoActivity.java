@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.mylibraryapp.EntityObjects.Book;
+import com.example.android.mylibraryapp.EntityObjects.Favorite;
 import com.example.android.mylibraryapp.EntityObjects.Review;
 import com.example.android.mylibraryapp.Misc.ReviewAdapter;
 import com.example.android.mylibraryapp.R;
@@ -130,10 +131,10 @@ public class ViewBookInfoActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 if (favorite.isChecked()) {
-                    Map<String, Object> faveData = new HashMap<>();
-                    faveData.put("bookRef", bookRef);
+                    Favorite fave = new Favorite(bookRef, book.getTitle(), book.getAuthor());
+
                     faveRef.document()
-                            .set(faveData);
+                            .set(fave);
                     String message = "Added to favorites";
                     Toast.makeText(ViewBookInfoActivity.this, message, Toast.LENGTH_SHORT).show();
                 }
