@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/editProfile"
+
+        android:icon="@drawable/ic_editprofile"
+        android:title="Edit Profile" />
+    <item
+        android:id="@+id/myRentals"
+
+        android:icon="@drawable/ic_rental"
+        android:title="My Rentals" />
+    <item
+        android:id="@+id/bookSearch"
+
+
+        android:icon="@drawable/ic_search"
+        android:title="Search a Book" />
+    <item
+        android:id="@+id/bookRequest"
+
+
+        android:icon="@drawable/ic_requestbook"
+        android:title="Request a Book" />
+    <item
+        android:id="@+id/myFavorites"
+
+
+        android:icon="@drawable/ic_favorite"
+        android:title="My Favorites" />
+    <item
+        android:id="@+id/fees"
+
+
+        android:icon="@drawable/ic_payment"
+        android:title="Pay Fees" />
+    <item
+        android:id="@+id/adminAcess"
+        android:icon="@drawable/ic_logout"
+        android:title="Admin Access" />
+    <item
+        android:id="@+id/logout"
+
+
+        android:icon="@drawable/ic_logout"
+        android:title="Logout" />
+</menu>

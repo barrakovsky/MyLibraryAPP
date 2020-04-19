@@ -34,4 +34,30 @@
     <string name="edit_qty_label">Quantity: </string>
     <string name="edit_qty_default">Qty in stock</string>
     <string name="edit_but_label">Submit</string>
+
+    <!-- Main Screen -->
+    <string name="main_header">Active Rentals</string>
+
+    <!-- Add book to DB -->
+    <string name="addBookHeader">Add Book To DB</string>
+    <string name="titleHint">Book Title (Required)</string>
+    <string name="authorHint">Book Author (Required)</string>
+    <string name="isbnHint">ISBN (Required)</string>
+    <string name="publisherHint">Book publisher</string>
+    <string name="genreHint">Book Genre</string>
+    <string name="totQtyHint">Total Qty</string>
+    <string name="publishedYearHint">Published Year</string>
+    <string name="numPagesHint">Number Of Pages</string>
+    <string name="summaryHint">Write Book Summary</string>
+    <string name="buttonText">Save To DB</string>
+
+    <!--Admin view-->
+    <string name="adminMainHeader">Admin View</string>
+    <string name="bAdminAddBook">Add Book</string>
+    <string name="bAdminRemoveBook">Remove Book</string>
+    <string name="lAdminEditBook">Edit Book</string>
+    <string name="lViewAllRentals">View Rentals</string>
+    <string name="lBookRequests">View Requests</string>
+    <string name="lViewUsers">View Users</string>
+
 </resources>

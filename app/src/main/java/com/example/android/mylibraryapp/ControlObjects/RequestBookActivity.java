@@ -15,18 +15,24 @@ import com.example.android.mylibraryapp.EntityObjects.Request;
 import com.example.android.mylibraryapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RequestBookActivity extends BaseActivity {
 
     private EditText requestTitle, requestAuthor, requestISBN, requestGenre, requestPublisher, requestYear;
     private Button requestSubmit;
+    FirebaseAuth firebaseAuth;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent i = getIntent();
+        super.isAdmin = i.getBooleanExtra("isAdmin", false);
+        firebaseAuth = FirebaseAuth.getInstance();
+
         setContentView(R.layout.request_form);
 
         requestTitle = findViewById(R.id.request_title);

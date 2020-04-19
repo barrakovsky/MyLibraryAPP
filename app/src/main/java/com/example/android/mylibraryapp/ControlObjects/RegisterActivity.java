@@ -3,6 +3,7 @@ package com.example.android.mylibraryapp.ControlObjects;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android.mylibraryapp.EntityObjects.User;
 import com.example.android.mylibraryapp.R;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -26,6 +28,10 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.functions.FirebaseFunctions;
+import com.google.firebase.functions.FirebaseFunctionsException;
+import com.google.firebase.functions.HttpsCallableResult;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,6 +46,10 @@ public class RegisterActivity extends AppCompatActivity {
     EditText phoneNumber_editText;
     EditText email_editText;
     EditText password_editText;
+
+
+    private static final String TAG = "MainActivity";
+
 
     //The entry point of the Firebase Authentication SDK.
     FirebaseAuth firebaseAuth;
@@ -64,6 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
         //Writing to the database
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+
 
 
         //Event handler when the register button is clicked
@@ -136,17 +147,19 @@ public class RegisterActivity extends AppCompatActivity {
                             user.put("userName", information.getUserName());
                             user.put("email", information.getEmail());
                             user.put("phone", information.getPhone());
+
+
+
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-
 
                                     Toast.makeText(RegisterActivity.this, "Login Successful ! ", Toast.LENGTH_SHORT).show();
 
                                 }
                             });
 
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                           startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         }
                         else
                         {
@@ -170,5 +183,8 @@ public class RegisterActivity extends AppCompatActivity {
         Intent login = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(login);
     }
+
+
+
 }
 

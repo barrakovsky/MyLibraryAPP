@@ -35,6 +35,8 @@ public class ViewFavoritesActivity extends BaseActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent i = getIntent();
+        super.isAdmin = i.getBooleanExtra("isAdmin", false);
         setContentView(R.layout.activity_view_favorites);
         setUpRecyclerView();
     }

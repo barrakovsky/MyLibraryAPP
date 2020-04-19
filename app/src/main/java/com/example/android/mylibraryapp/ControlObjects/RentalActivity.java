@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -33,10 +34,16 @@ import java.util.Date;
 import java.util.List;
 
 public class RentalActivity extends BaseActivity {
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Intent i = getIntent();
+        super.isAdmin = i.getBooleanExtra("isAdmin", false);
+        firebaseAuth = FirebaseAuth.getInstance();
+
+
         setContentView(R.layout.activity_rental);
         
             }

@@ -25,6 +25,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class EditProfileActivity extends BaseActivity {
+
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
     String uid;
@@ -43,7 +44,11 @@ public class EditProfileActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
+        Intent i = getIntent();
+        super.isAdmin = i.getBooleanExtra("isAdmin", false);
         setContentView(R.layout.activity_edit_profile);
 
         firebaseAuth = FirebaseAuth.getInstance();
