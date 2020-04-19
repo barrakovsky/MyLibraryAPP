@@ -22,9 +22,10 @@
         <activity android:name=".ControlObjects.RequestBookActivity"/>
         <activity android:name=".ControlObjects.ViewBookInfoActivity"/>
         <activity android:name=".ControlObjects.ViewFavoritesActivity"/>
-        <activity android:name=".ControlObjects.LoginActivity"/>
         <activity android:name=".ControlObjects.AddBookToDB"/>
-        <activity android:name=".ControlObjects.AdminView">
+        <activity android:name=".ControlObjects.AdminView"/>
+        <activity android:name=".ControlObjects.LoginActivity">
+>
 
 
             <intent-filter>
