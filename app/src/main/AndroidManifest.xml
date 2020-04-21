@@ -25,7 +25,7 @@
         <activity android:name=".ControlObjects.AddBookToDB"/>
         <activity android:name=".ControlObjects.AdminView"/>
         <activity android:name=".ControlObjects.LoginActivity">
->
+
 
 
             <intent-filter>
