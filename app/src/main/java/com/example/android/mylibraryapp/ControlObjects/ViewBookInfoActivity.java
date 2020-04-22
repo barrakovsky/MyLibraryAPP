@@ -32,6 +32,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +41,7 @@ public class ViewBookInfoActivity extends BaseActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference reviewRef;
     private FirebaseUser user;
+
 
     private ReviewAdapter adapter;
 
@@ -55,6 +57,7 @@ public class ViewBookInfoActivity extends BaseActivity {
     private TextView pages;
     private TextView quantity;
     private CheckBox favorite;
+    Boolean isActive = true;
 
     private ArrayList<DocumentReference> favorites = new ArrayList<>();
 
@@ -73,12 +76,16 @@ public class ViewBookInfoActivity extends BaseActivity {
         quantity = findViewById(R.id.bookInfoQty);
         favorite = findViewById(R.id.bookInfoFavorite);
 
-        book = (Book)getIntent().getSerializableExtra("Book");
+        book = (Book) getIntent().getSerializableExtra("Book");
         bookID = getIntent().getStringExtra("bookID");
 
-        reviewRef = db.collection("Book").document(bookID).collection("Reviews");
         user = FirebaseAuth.getInstance().getCurrentUser();
+
+        reviewRef = db.collection("Book").document(bookID).collection("Reviews");
+
+
         final CollectionReference faveRef = db.collection("Users").document(user.getUid()).collection("Favorites");
+
         final DocumentReference bookRef = db.collection("Book").document(bookID);
 
         //set book information
@@ -137,8 +144,7 @@ public class ViewBookInfoActivity extends BaseActivity {
                             .set(fave);
                     String message = "Added to favorites";
                     Toast.makeText(ViewBookInfoActivity.this, message, Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Query query = faveRef.whereEqualTo("bookRef", bookRef);
                     query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
@@ -166,6 +172,28 @@ public class ViewBookInfoActivity extends BaseActivity {
         addRev.putExtra("Book", book);
         startActivity(addRev);
     }
+
+    public void rentBook(View v) {
+
+        CollectionReference collectionReference = db.collection("Users").document(user.getUid()).collection("Rentals");
+
+        String currentDate = java.text.DateFormat.getDateTimeInstance().format(new Date());
+
+
+        Map<String, Object> userRental = new HashMap<>();
+
+        userRental.put("active", isActive);
+        userRental.put("bookTitle", book.getTitle());
+        userRental.put("dueDate", "");
+        userRental.put("ISBN", book.getIsbn());
+        userRental.put("quantity", "");
+        userRental.put("returnedDate", "");
+        userRental.put("startDate", currentDate);
+
+
+        collectionReference.add(userRental);
+    }
+
 
     private void setUpRecyclerView() {
         Query query = reviewRef.orderBy("date", Query.Direction.DESCENDING);
