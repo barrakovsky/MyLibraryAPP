@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -29,8 +28,7 @@
         android:layout_marginTop="16dp"
         android:contentDescription="@string/review_book_cover"
         app:layout_constraintTop_toBottomOf="@+id/review_header_tx"
-        app:srcCompat="@drawable/no_image_available"
-        tools:layout_editor_absoluteX="-30dp" />
+        app:srcCompat="@drawable/no_image_available" />
 
     <TextView
         android:id="@+id/review_title_tx"
@@ -101,7 +99,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="#009688"
-        android:onClick="submitReview"
+        android:clickable="true"
+        android:focusable="true"
         android:text="@string/review_book_button"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"

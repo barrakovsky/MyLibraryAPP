@@ -35,13 +35,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class ViewBookInfoActivity extends BaseActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference reviewRef;
     private FirebaseUser user;
-
 
     private ReviewAdapter adapter;
 
@@ -78,14 +78,9 @@ public class ViewBookInfoActivity extends BaseActivity {
 
         book = (Book) getIntent().getSerializableExtra("Book");
         bookID = getIntent().getStringExtra("bookID");
-
         user = FirebaseAuth.getInstance().getCurrentUser();
 
-        reviewRef = db.collection("Book").document(bookID).collection("Reviews");
-
-
         final CollectionReference faveRef = db.collection("Users").document(user.getUid()).collection("Favorites");
-
         final DocumentReference bookRef = db.collection("Book").document(bookID);
 
         //set book information
@@ -161,18 +156,31 @@ public class ViewBookInfoActivity extends BaseActivity {
         });
 
         // Setting up reviews at bottom of page
+        reviewRef = db.collection("Book").document(bookID).collection("Reviews");
         TextView reviewHead = findViewById(R.id.book_info_rev_head_tx);
         reviewHead.setText(String.format("Read reviews about %s:", book.getTitle()));
         setUpRecyclerView();
     }
 
-    public void AddReview(View v) {
-        Intent addRev = new Intent(ViewBookInfoActivity.this, ReviewActivity.class);
+    // AddReviewActivity starts when Add Review button is pressed
+    public void AddReview(View view) {
+        Intent addRev = new Intent(ViewBookInfoActivity.this, AddReviewActivity.class);
         addRev.putExtra("bookID", bookID);
         addRev.putExtra("Book", book);
         startActivity(addRev);
     }
 
+    // EditReviewActivity starts when user presses on one of their own reviews
+    public void EditReview(Review review, String revID) {
+        Intent editRev = new Intent(ViewBookInfoActivity.this, EditReviewActivity.class);
+        editRev.putExtra("bookID", bookID);
+        editRev.putExtra("Book", book);
+        editRev.putExtra("Review", review);
+        editRev.putExtra("ReviewID", revID);
+        startActivity(editRev);
+    }
+
+    // Book rental button functionality
     public void rentBook(View v) {
 
         CollectionReference collectionReference = db.collection("Users").document(user.getUid()).collection("Rentals");
@@ -194,9 +202,11 @@ public class ViewBookInfoActivity extends BaseActivity {
         collectionReference.add(userRental);
     }
 
-
+    // Recyclerview for reviews shown at bottom of screen
     private void setUpRecyclerView() {
-        Query query = reviewRef.orderBy("date", Query.Direction.DESCENDING);
+
+        // Reviews displayed in order of last edited date first
+        Query query = reviewRef.orderBy("lastDate", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<Review> option = new FirestoreRecyclerOptions.Builder<Review>()
                 .setQuery(query, Review.class)
@@ -204,9 +214,22 @@ public class ViewBookInfoActivity extends BaseActivity {
 
         adapter = new ReviewAdapter(option);
 
+        adapter.setOnItemClickListener(new ReviewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                Review review = documentSnapshot.toObject(Review.class);
+                // Any review that was mad by the logged in user is clickable and editable by that user
+                if (Objects.requireNonNull(review).getUserID().equals(FirebaseAuth.getInstance().getUid())) {
+                    String revID = documentSnapshot.getId();
+                    EditReview(review, revID);
+                }
+            }
+        });
+
         RecyclerView recyclerView = findViewById(R.id.reviews_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
     }
 
     @Override

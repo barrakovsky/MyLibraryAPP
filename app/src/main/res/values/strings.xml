@@ -4,7 +4,12 @@
     <string name="Close">close</string>
 
     <!-- Book Info Activity -->
+    <string name="book_info_img">Book Cover</string>
     <string name="book_info_review">Read Reviews:</string>
+    <string name="rev_item_user">Username</string>
+    <string name="rev_item_date">date</string>
+    <string name="rev_item_review">Review</string>
+    <string name="rev_item_imgbut">Editable Review Icon</string>
 
     <!-- Review Activity -->
     <string name="review_book_header">Review Book</string>
@@ -14,6 +19,9 @@
     <string name="review_book_prompt">Write review:</string>
     <string name="review_book_button">Submit</string>
     <string name="review_book_hint">My thoughts on this book are…</string>
+
+    <!-- Edit Review Activity -->
+    <string name="edit_review_header">Edit Review</string>
 
     <!-- Edit Book Details Activity -->
     <string name="edit_book_details_header">Edit Book Details</string>

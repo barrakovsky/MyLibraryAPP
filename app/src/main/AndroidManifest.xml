@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ControlObjects.ReviewActivity" />
+        <activity android:name=".ControlObjects.AddReviewActivity" />
+        <activity android:name=".ControlObjects.EditReviewActivity" />
         <activity android:name=".ControlObjects.changePasswordActivity" />
         <activity android:name=".ControlObjects.EditBookDetailsActivity" />
         <activity android:name=".ControlObjects.BaseActivity" />
@@ -25,12 +26,8 @@
         <activity android:name=".ControlObjects.AddBookToDB"/>
         <activity android:name=".ControlObjects.AdminView"/>
         <activity android:name=".ControlObjects.LoginActivity">
-
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
