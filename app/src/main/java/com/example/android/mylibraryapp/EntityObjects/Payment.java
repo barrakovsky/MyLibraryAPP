@@ -10,16 +10,21 @@ public class Payment {
     private double amount;
     private double totAmountPaid;
     private boolean paidFlag;
-    private User user;
+    private String userID;
 
-    public Payment(String invId, Date invDate, String itemDesc, double amount, double totAmountPaid, boolean paidFlag, User user) {
+    // no argument constructor required for firestore operations
+    public Payment() {
+
+    }
+
+    public Payment(String invId, Date invDate, String itemDesc, double amount, double totAmountPaid, boolean paidFlag, String userID) {
         this.invId = invId;
         this.invDate = invDate;
         this.itemDesc = itemDesc;
         this.amount = amount;
         this.totAmountPaid = totAmountPaid;
         this.paidFlag = paidFlag;
-        this.user = user;
+        this.userID = userID;
     }
 
     public String getInvId() {
@@ -29,7 +34,6 @@ public class Payment {
     public void setInvId(String invId) {
         this.invId = invId;
     }
-
 
     public Date getInvDate() {
         return invDate;
@@ -71,12 +75,12 @@ public class Payment {
         this.paidFlag = paidFlag;
     }
 
-    public User getUser() {
-        return user;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     @Override
@@ -88,7 +92,7 @@ public class Payment {
                 ", amount=" + amount +
                 ", totAmountPaid=" + totAmountPaid +
                 ", paidFlag=" + paidFlag +
-                ", user=" + user +
+                ", userID=" + userID +
                 '}';
     }
 }

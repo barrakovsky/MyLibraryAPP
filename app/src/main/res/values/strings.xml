@@ -68,4 +68,16 @@
     <string name="lBookRequests">View Requests</string>
     <string name="lViewUsers">View Users</string>
 
+    <!-- Payments/fees activity -->
+    <string name="pay_header">View Payments</string>
+    <string name="pay_out">Outstanding</string>
+    <string name="pay_hist">History</string>
+
+    <!-- Payment list item -->
+    <string name="pay_item_desc">Description</string>
+    <string name="pay_item_date">Date Charged</string>
+    <string name="pay_item_paid">Date Paid</string>
+    <string name="pay_item_amt">Amount Paid</string>
+    <string name="pay_item_due">Amount Due</string>
+
 </resources>
