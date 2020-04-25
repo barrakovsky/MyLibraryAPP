@@ -3,14 +3,14 @@ package com.example.android.mylibraryapp.EntityObjects;
 import java.io.Serializable;
 
 public class Book implements Serializable {
-    private String author = "N/A";
+    private String author;
     private int availableQty;
-    private String genre = "N/A";
+    private String genre;
     private long isbn;
     private int numberOfPages;
-    private String publisher = "N/A";
+    private String publisher;
     private int publishingYear;
-    private String summary = "N/A";
+    private String summary;
     private String title;
     private int totQty;
 
