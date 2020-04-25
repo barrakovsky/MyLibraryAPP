@@ -1,6 +1,5 @@
 package com.example.android.mylibraryapp.ControlObjects;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,23 +7,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.android.mylibraryapp.EntityObjects.Request;
-import com.example.android.mylibraryapp.EntityObjects.User;
+import com.example.android.mylibraryapp.EntityObjects.Payment;
 import com.example.android.mylibraryapp.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 
 public class BaseActivity extends AppCompatActivity {
@@ -117,6 +108,13 @@ public class BaseActivity extends AppCompatActivity {
                             finish();
                             break;
 
+                        case R.id.fees:
+                            Intent payments = new Intent(BaseActivity.this, PaymentActivity.class);
+                            payments.putExtra("isAdmin", true);
+                            startActivity(payments);
+                            finish();
+                            break;
+
                         case R.id.adminAcess:
                             Intent adminView = new Intent(BaseActivity.this, AdminView.class);
                             adminView.putExtra("isAdmin", true);
@@ -198,6 +196,12 @@ public class BaseActivity extends AppCompatActivity {
                         case R.id.myFavorites:
                             Intent favorites = new Intent(BaseActivity.this, ViewFavoritesActivity.class);
                             startActivity(favorites);
+                            finish();
+                            break;
+
+                        case R.id.fees:
+                            Intent payments = new Intent(BaseActivity.this, PaymentActivity.class);
+                            startActivity(payments);
                             finish();
                             break;
 

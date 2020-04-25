@@ -1,8 +1,10 @@
 package com.example.android.mylibraryapp.ControlObjects;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +41,7 @@ import java.util.Objects;
 
 public class ViewBookInfoActivity extends BaseActivity {
 
+    private Button addReviewBut;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference reviewRef;
     private FirebaseUser user;
@@ -155,11 +158,33 @@ public class ViewBookInfoActivity extends BaseActivity {
             }
         });
 
+        // Review Button is disabled if the user has already written a review for this book.
+        setUpReviewButton();
+
         // Setting up reviews at bottom of page
-        reviewRef = db.collection("Book").document(bookID).collection("Reviews");
         TextView reviewHead = findViewById(R.id.book_info_rev_head_tx);
         reviewHead.setText(String.format("Read reviews about %s:", book.getTitle()));
         setUpRecyclerView();
+    }
+
+    private void setUpReviewButton() {
+        addReviewBut = findViewById(R.id.add_review_but);
+        reviewRef = db.collection("Book").document(bookID).collection("Reviews");
+
+        reviewRef.whereEqualTo("userID", FirebaseAuth.getInstance().getUid() )
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            QuerySnapshot querySnapshot = task.getResult();
+                            if (!Objects.requireNonNull(querySnapshot).isEmpty()) { // no documents found
+                                addReviewBut.setAlpha(.08f);
+                                addReviewBut.setClickable(false);
+                            }
+                        }
+                    }
+                });
     }
 
     // AddReviewActivity starts when Add Review button is pressed
@@ -236,6 +261,7 @@ public class ViewBookInfoActivity extends BaseActivity {
     protected void onStart() {
         super.onStart();
         adapter.startListening();
+        setUpReviewButton();
     }
 
     @Override
