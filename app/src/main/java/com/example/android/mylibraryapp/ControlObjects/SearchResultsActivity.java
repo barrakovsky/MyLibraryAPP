@@ -4,9 +4,12 @@ package com.example.android.mylibraryapp.ControlObjects;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,13 +40,19 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class SearchResultsActivity extends BaseActivity {
+public class SearchResultsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference bookRef = db.collection("Book");
 
     private BookAdapter adapter;
     private RecyclerView recyclerView;
     private SearchView searchView;
+
+    private ImageButton filter;
+    private Spinner field;
+    private Spinner genre;
+    private TextView fieldText;
+    private TextView genreText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +61,40 @@ public class SearchResultsActivity extends BaseActivity {
         super.isAdmin = i.getBooleanExtra("isAdmin", false);
         setContentView(R.layout.activity_search_result);
         searchView = findViewById(R.id.search_view);
+        field = findViewById(R.id.search_field);
+        genre = findViewById(R.id.genre_filter);
+        fieldText = findViewById(R.id.search_by);
+        genreText = findViewById(R.id.search_genre);
+        filter = findViewById(R.id.search_filter);
+
+        ArrayAdapter<CharSequence> fieldAdapter = ArrayAdapter.createFromResource(this, R.array.search_fields, android.R.layout.simple_spinner_item);
+        fieldAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        field.setAdapter(fieldAdapter);
+        field.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> genreAdapter = ArrayAdapter.createFromResource(this, R.array.search_genres, android.R.layout.simple_spinner_item);
+        fieldAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        genre.setAdapter(genreAdapter);
+        genre.setOnItemSelectedListener(this);
+
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (field.getVisibility() == View.GONE) {
+                    field.setVisibility(View.VISIBLE);
+                    fieldText.setVisibility(View.VISIBLE);
+                    genre.setVisibility(View.VISIBLE);
+                    genreText.setVisibility(View.VISIBLE);
+                }
+                else if (field.getVisibility() == View.VISIBLE) {
+                    field.setVisibility(View.GONE);
+                    fieldText.setVisibility(View.GONE);
+                    genre.setVisibility(View.GONE);
+                    genreText.setVisibility(View.GONE);
+                }
+            }
+        });
+
         setUpRecyclerView();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -117,5 +160,15 @@ public class SearchResultsActivity extends BaseActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
