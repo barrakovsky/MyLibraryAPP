@@ -46,6 +46,25 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/search_view"
         android:layout_toRightOf="@id/search_by"
+        android:layout_alignBaseline="@id/search_by"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/order_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order by: "
+        android:layout_below="@id/search_by"
+        android:layout_margin="5dp"
+        android:visibility="gone"/>
+
+    <Spinner
+        android:id="@+id/search_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_field"
+        android:layout_toRightOf="@id/order_by"
+        android:layout_alignBaseline="@id/order_by"
         android:visibility="gone"/>
 
     <TextView
@@ -53,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Genre: "
-        android:layout_below="@id/search_by"
+        android:layout_below="@id/order_by"
         android:layout_margin="5dp"
         android:visibility="gone"/>
 
@@ -61,8 +80,9 @@
         android:id="@+id/genre_filter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/search_field"
+        android:layout_below="@id/search_order"
         android:layout_toRightOf="@id/search_genre"
+        android:layout_alignBaseline="@id/search_genre"
         android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
