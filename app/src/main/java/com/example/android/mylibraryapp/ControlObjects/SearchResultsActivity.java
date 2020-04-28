@@ -40,7 +40,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class SearchResultsActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
+public class SearchResultsActivity extends BaseActivity{
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference bookRef = db.collection("Book");
 
@@ -51,8 +51,10 @@ public class SearchResultsActivity extends BaseActivity implements AdapterView.O
     private ImageButton filter;
     private Spinner field;
     private Spinner genre;
+    private Spinner order;
     private TextView fieldText;
     private TextView genreText;
+    private TextView orderText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,19 +65,23 @@ public class SearchResultsActivity extends BaseActivity implements AdapterView.O
         searchView = findViewById(R.id.search_view);
         field = findViewById(R.id.search_field);
         genre = findViewById(R.id.genre_filter);
+        order = findViewById(R.id.search_order);
         fieldText = findViewById(R.id.search_by);
         genreText = findViewById(R.id.search_genre);
+        orderText = findViewById(R.id.order_by);
         filter = findViewById(R.id.search_filter);
 
         ArrayAdapter<CharSequence> fieldAdapter = ArrayAdapter.createFromResource(this, R.array.search_fields, android.R.layout.simple_spinner_item);
         fieldAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         field.setAdapter(fieldAdapter);
-        field.setOnItemSelectedListener(this);
 
         ArrayAdapter<CharSequence> genreAdapter = ArrayAdapter.createFromResource(this, R.array.search_genres, android.R.layout.simple_spinner_item);
         fieldAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         genre.setAdapter(genreAdapter);
-        genre.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> orderAdapter = ArrayAdapter.createFromResource(this, R.array.search_orders, android.R.layout.simple_spinner_item);
+        fieldAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        order.setAdapter(orderAdapter);
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,12 +91,16 @@ public class SearchResultsActivity extends BaseActivity implements AdapterView.O
                     fieldText.setVisibility(View.VISIBLE);
                     genre.setVisibility(View.VISIBLE);
                     genreText.setVisibility(View.VISIBLE);
+                    order.setVisibility(View.VISIBLE);
+                    orderText.setVisibility(View.VISIBLE);
                 }
                 else if (field.getVisibility() == View.VISIBLE) {
                     field.setVisibility(View.GONE);
                     fieldText.setVisibility(View.GONE);
                     genre.setVisibility(View.GONE);
                     genreText.setVisibility(View.GONE);
+                    order.setVisibility(View.GONE);
+                    orderText.setVisibility(View.GONE);
                 }
             }
         });
@@ -138,10 +148,30 @@ public class SearchResultsActivity extends BaseActivity implements AdapterView.O
     }
 
     private void search(String search) {
-        Query query = bookRef.orderBy("title", Query.Direction.ASCENDING).startAt(search).endAt(search + "\uf8ff");
+        Query query = bookRef;
 
-        if (search.isEmpty())
-            query = bookRef.orderBy("title", Query.Direction.ASCENDING);
+        if (field.getSelectedItem().toString().equals("Title")) {
+            if (order.getSelectedItem().toString().equals("Ascending")) {
+                query = query.orderBy("title", Query.Direction.ASCENDING);
+            }
+            else{
+                query = query.orderBy("title", Query.Direction.DESCENDING);
+            }
+        }
+        else if (field.getSelectedItem().toString().equals("Author")) {
+            if (order.getSelectedItem().toString().equals("Ascending")) {
+                query = query.orderBy("author", Query.Direction.ASCENDING);
+            }
+            if (order.getSelectedItem().toString().equals("Descending")) {
+                query = query.orderBy("author", Query.Direction.DESCENDING);
+            }
+        }
+
+        if (!genre.getSelectedItem().toString().equals("All")) {
+            query = query.whereEqualTo("genre", genre.getSelectedItem().toString());
+        }
+
+        query = query.startAt(search).endAt(search + "\uf8ff");
 
         FirestoreRecyclerOptions<Book> option = new FirestoreRecyclerOptions.Builder<Book>()
                 .setQuery(query, Book.class)
@@ -162,13 +192,4 @@ public class SearchResultsActivity extends BaseActivity implements AdapterView.O
         adapter.stopListening();
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 }
