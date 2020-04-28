@@ -97,4 +97,10 @@
         <item>Western</item>
     </string-array>
 
+    <!-- Search order options -->
+    <string-array name="search_orders">
+        <item>Ascending</item>
+        <item>Descending</item>
+    </string-array>
+
 </resources>
