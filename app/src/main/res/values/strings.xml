@@ -79,5 +79,22 @@
     <string name="pay_item_paid">Date Paid</string>
     <string name="pay_item_amt">Amount Paid</string>
     <string name="pay_item_due">Amount Due</string>
+    
+    <!-- Search field options -->
+    <string-array name="search_fields">
+        <item>Title</item>
+        <item>Author</item>
+    </string-array>
+
+    <!-- Search genre options -->
+    <string-array name="search_genres">
+        <item>All</item>
+        <item>Fiction</item>
+        <item>Nonfiction</item>
+        <item>Classics</item>
+        <item>Fantasy</item>
+        <item>Science Fiction</item>
+        <item>Western</item>
+    </string-array>
 
 </resources>
