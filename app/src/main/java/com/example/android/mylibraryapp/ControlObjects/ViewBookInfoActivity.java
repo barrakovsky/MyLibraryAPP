@@ -46,6 +46,7 @@ public class ViewBookInfoActivity extends BaseActivity {
     private CollectionReference reviewRef;
     private FirebaseUser user;
 
+
     private ReviewAdapter adapter;
 
     private Book book;
@@ -210,26 +211,26 @@ public class ViewBookInfoActivity extends BaseActivity {
 
         String rentalID = Long.toString(System.currentTimeMillis());
 
-        CollectionReference collectionReference = db.collection("Users").document(user.getUid()).collection("Rentals");
+            CollectionReference collectionReference = db.collection("Users").document(user.getUid()).collection("Rentals");
 
-        String rentalStartDate = java.text.DateFormat.getDateTimeInstance().format(new Date());
-
-
-        Map<String, Object> userRental = new HashMap<>();
-
-        userRental.put("rentalID", rentalID);
-        userRental.put("active", active);
-        userRental.put("bookTitle", book.getTitle());
-        userRental.put("rentalDueDate", "");
-        userRental.put("isbn", book.getIsbn());
-        userRental.put("amount", "");
-        userRental.put("returnedDate", "");
-        userRental.put("rentalStartDate", rentalStartDate);
-
-        
+            String rentalStartDate = java.text.DateFormat.getDateTimeInstance().format(new Date());
 
 
-        collectionReference.add(userRental);
+            Map<String, Object> userRental = new HashMap<>();
+
+            userRental.put("userID", user.getUid());
+            userRental.put("rentalID", rentalID);
+            userRental.put("active", active);
+            userRental.put("bookTitle", book.getTitle());
+            userRental.put("rentalDueDate", "");
+            userRental.put("isbn", book.getIsbn());
+            userRental.put("amount", "");
+            userRental.put("returnedDate", "");
+            userRental.put("rentalStartDate", rentalStartDate);
+
+
+            collectionReference.add(userRental);
+
     }
 
     // Recyclerview for reviews shown at bottom of screen
