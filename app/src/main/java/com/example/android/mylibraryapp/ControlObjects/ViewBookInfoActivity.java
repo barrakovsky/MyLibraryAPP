@@ -60,7 +60,7 @@ public class ViewBookInfoActivity extends BaseActivity {
     private TextView pages;
     private TextView quantity;
     private CheckBox favorite;
-    Boolean isActive = true;
+    Boolean active = true;
 
     private ArrayList<DocumentReference> favorites = new ArrayList<>();
 
@@ -208,20 +208,25 @@ public class ViewBookInfoActivity extends BaseActivity {
     // Book rental button functionality
     public void rentBook(View v) {
 
+        String rentalID = Long.toString(System.currentTimeMillis());
+
         CollectionReference collectionReference = db.collection("Users").document(user.getUid()).collection("Rentals");
 
-        String currentDate = java.text.DateFormat.getDateTimeInstance().format(new Date());
+        String rentalStartDate = java.text.DateFormat.getDateTimeInstance().format(new Date());
 
 
         Map<String, Object> userRental = new HashMap<>();
 
-        userRental.put("active", isActive);
+        userRental.put("rentalID", rentalID);
+        userRental.put("active", active);
         userRental.put("bookTitle", book.getTitle());
-        userRental.put("dueDate", "");
-        userRental.put("ISBN", book.getIsbn());
-        userRental.put("quantity", "");
+        userRental.put("rentalDueDate", "");
+        userRental.put("isbn", book.getIsbn());
+        userRental.put("amount", "");
         userRental.put("returnedDate", "");
-        userRental.put("startDate", currentDate);
+        userRental.put("rentalStartDate", rentalStartDate);
+
+        
 
 
         collectionReference.add(userRental);
