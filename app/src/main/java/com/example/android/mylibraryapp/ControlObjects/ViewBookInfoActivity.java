@@ -182,7 +182,8 @@ public class ViewBookInfoActivity extends BaseActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             QuerySnapshot querySnapshot = task.getResult();
-                            if (!Objects.requireNonNull(querySnapshot).isEmpty()) { // no documents found
+                            // if the user has already left a review, disable and gray out the button
+                            if (!Objects.requireNonNull(querySnapshot).isEmpty()) {
                                 addReviewBut.setAlpha(.08f);
                                 addReviewBut.setClickable(false);
                             }
@@ -277,7 +278,7 @@ public class ViewBookInfoActivity extends BaseActivity {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 Review review = documentSnapshot.toObject(Review.class);
-                // Any review that was mad by the logged in user is clickable and editable by that user
+                // Any review that was made by the logged in user is clickable and editable by that user
                 if (Objects.requireNonNull(review).getUserID().equals(FirebaseAuth.getInstance().getUid())) {
                     String revID = documentSnapshot.getId();
                     EditReview(review, revID);

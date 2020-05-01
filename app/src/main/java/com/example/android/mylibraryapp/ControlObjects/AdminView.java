@@ -41,7 +41,7 @@ public class AdminView extends BaseActivity {
                 public void onClick(View view){
 
                     switch (view.getId()) {
-                        case R.id.admiAddBook:
+                        case R.id.adminAddBook:
                             Intent addBook = new Intent(AdminView.this, AddBookToDB.class);
                             startActivity(addBook);
                             break;
@@ -51,8 +51,9 @@ public class AdminView extends BaseActivity {
                         case R.id.adminEditBook:
                             Toast.makeText(AdminView.this, "clicked on edit book", Toast.LENGTH_SHORT).show();
                             break;
-                        case R.id.adminViewRenatls:
-                            Toast.makeText(AdminView.this, "clicked on view rentals", Toast.LENGTH_SHORT).show();
+                        case R.id.adminViewRentals:
+                            Intent viewRentals = new Intent(AdminView.this, AdminRentalsActivity.class);
+                            startActivity(viewRentals);
                             break;
                         case R.id.adminViewRequests:
                             Toast.makeText(AdminView.this, "clicked on view requests", Toast.LENGTH_SHORT).show();

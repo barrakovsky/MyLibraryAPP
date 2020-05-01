@@ -17,7 +17,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 public class FavoriteAdapter extends FirestoreRecyclerAdapter<Favorite, FavoriteAdapter.FavoriteHolder> {
     private OnItemClickListener listener;
 
-    public FavoriteAdapter(@NonNull FirestoreRecyclerOptions options) {
+    public FavoriteAdapter(@NonNull FirestoreRecyclerOptions<Favorite> options) {
         super(options);
     }
 
