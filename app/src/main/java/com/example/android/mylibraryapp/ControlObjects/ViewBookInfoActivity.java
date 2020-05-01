@@ -237,8 +237,6 @@ public class ViewBookInfoActivity extends BaseActivity {
             String message = "You checked out " + book.getTitle();
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 
-
-
             collectionReference.add(userRental);
 
     }
@@ -254,6 +252,7 @@ public class ViewBookInfoActivity extends BaseActivity {
 
         return futureDate;
     }
+
 
     public void placeHold(View v)
     {
