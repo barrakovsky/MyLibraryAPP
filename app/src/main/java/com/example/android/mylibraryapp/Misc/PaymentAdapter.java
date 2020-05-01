@@ -12,8 +12,6 @@ import com.example.android.mylibraryapp.EntityObjects.Payment;
 import com.example.android.mylibraryapp.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.auth.FirebaseAuth;
-
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 

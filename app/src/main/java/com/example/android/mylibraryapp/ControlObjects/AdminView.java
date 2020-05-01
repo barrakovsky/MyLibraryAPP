@@ -54,7 +54,9 @@ public class AdminView extends BaseActivity {
                         case R.id.adminViewRequests:
                             Toast.makeText(AdminView.this, "clicked on view requests", Toast.LENGTH_SHORT).show();
                        case R.id.adminViewUsers:
-                            Toast.makeText(AdminView.this, "clicked on view users", Toast.LENGTH_SHORT).show();
+                           Intent viewUsers = new Intent(AdminView.this, ViewUsersActivity.class);
+                           startActivity(viewUsers);
+                           break;
                     }
                 }
             });

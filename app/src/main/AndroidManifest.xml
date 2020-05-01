@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ControlObjects.PaymentActivity"/>
+        <activity android:name=".ControlObjects.ViewUsersActivity"></activity>
+        <activity android:name=".ControlObjects.PaymentActivity" />
         <activity android:name=".ControlObjects.AddReviewActivity" />
         <activity android:name=".ControlObjects.EditReviewActivity" />
         <activity android:name=".ControlObjects.changePasswordActivity" />
