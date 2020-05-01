@@ -5,33 +5,40 @@ import java.util.Date;
 public class Rental {
 
 
-    public Rental(String rentalId, Date rentalDueDate, User user, Book book, int amount, boolean active) {
-        this.rentalId = rentalId;
-        this.rentalDueDate = rentalDueDate;
-        this.user = user;
-        this.book = book;
-        this.amount = amount;
-        this.active = active;
-    }
 
-    private String rentalId;
+    private String rentalID;
     private Date rentalDueDate;
-    private User user;
-    private Book book;
+    private Date rentalStartDate;
+    private Date rentalReturnedDate;
+    private String userID;
+    private long isbn;
     private int amount;
     private boolean active;
+    private String bookTitle;
 
+    public Rental(){
 
-
-    public String getRentalId() {
-        return rentalId;
     }
 
-    public void setRentalId(String rentalId) {
-        this.rentalId = rentalId;
+    public Rental(String rentalID, String bookTitle, Date rentalDueDate, long isbn, int amount, boolean active, String userID,  Date rentalStartDate) {
+        this.rentalID = rentalID;
+        this.userID = userID;
+        this.rentalDueDate = rentalDueDate;
+        this.rentalStartDate = rentalStartDate;
+        this.active = active;
+        this.bookTitle = bookTitle;
+        this.isbn = isbn;
+        this.amount = amount;
+
     }
 
+    public String getRentalID() {
+        return rentalID;
+    }
 
+    public void setRentalID(String rentalId) {
+        this.rentalID = rentalID;
+    }
 
     public Date getRentalDueDate() {
         return rentalDueDate;
@@ -41,25 +48,37 @@ public class Rental {
         this.rentalDueDate = rentalDueDate;
     }
 
-
-    public User getUser() {
-        return user;
+    public Date getRentalStartDate() {
+        return rentalStartDate;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setRentalStartDate(Date rentalStartDate) {
+        this.rentalStartDate = rentalStartDate;
     }
 
-
-
-    public Book getBook() {
-        return book;
+    public Date getRentalReturnedDate() {
+        return rentalReturnedDate;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setRentalReturnedDate(Date rentalReturnedDate) {
+        this.rentalReturnedDate = rentalReturnedDate;
     }
 
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public long getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(long isbn) {
+        this.isbn = isbn;
+    }
 
     public int getAmount() {
         return amount;
@@ -77,12 +96,13 @@ public class Rental {
         this.active = active;
     }
 
+    public String getBookTitle() {
+        return bookTitle;
+    }
 
-
-
-
-
-
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
+    }
 
 
 

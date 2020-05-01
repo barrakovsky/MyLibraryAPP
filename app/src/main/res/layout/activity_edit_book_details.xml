@@ -31,17 +31,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:singleLine="true"
         android:text="@string/edit_ISBN_default"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/bGetBook"
         app:layout_constraintStart_toEndOf="@+id/edit_book_isbn_label"
-        app:layout_constraintTop_toBottomOf="@+id/edit_book_header"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_book_header" />
 
     <TextView
         android:id="@+id/edit_book_title_label"
@@ -201,10 +199,10 @@
 
     <EditText
         android:id="@+id/edit_book_summary_et"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="234dp"
+        android:layout_height="58dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:gravity="start|top"
@@ -213,45 +211,29 @@
         android:minLines="7"
         android:text="@string/edit_summary_default"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/edit_book_summary_label"
         app:layout_constraintTop_toBottomOf="@+id/edit_book_genre_et" />
-
-    <TextView
-        android:id="@+id/edit_book_quantity_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:labelFor="@id/edit_book_qty_et"
-        android:text="@string/edit_qty_label"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edit_book_qty_et"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/edit_book_qty_et"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:singleLine="true"
-        android:text="@string/edit_qty_default"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/edit_book_quantity_label"
-        app:layout_constraintTop_toBottomOf="@+id/edit_book_summary_et"
-        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/edit_book_but"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/colorPrimary"
         android:text="@string/edit_but_label"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_book_qty_et" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_book_summary_et" />
+
+    <Button
+        android:id="@+id/bGetBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/get_book"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/edit_book_title_et"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

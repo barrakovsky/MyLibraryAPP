@@ -231,7 +231,7 @@ public class ViewBookInfoActivity extends BaseActivity {
             userRental.put("bookTitle", book.getTitle());
             userRental.put("rentalDueDate", rentalDueDate);
             userRental.put("isbn", book.getIsbn());
-            userRental.put("amount", "");
+            userRental.put("amount", 1);
             userRental.put("returnedDate", "");
             userRental.put("rentalStartDate", rentalStartDate);
 

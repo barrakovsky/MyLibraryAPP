@@ -1,50 +1,109 @@
 package com.example.android.mylibraryapp.Misc;
 
-import android.content.Context;
-import android.graphics.Movie;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.Button;
+
+import androidx.appcompat.widget.LinearLayoutCompat;
+
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android.mylibraryapp.EntityObjects.Payment;
 import com.example.android.mylibraryapp.EntityObjects.Rental;
 import com.example.android.mylibraryapp.R;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
-public class RentalAdapter extends ArrayAdapter<Rental> {
+public class RentalAdapter extends FirestoreRecyclerAdapter<Rental, RentalAdapter.RentalHolder> {
 
-    private Context mContext;
-    private List<Rental> rentalList = new ArrayList<>();
+    private List<Rental> dataRentallList;
+    private OnItemClickListener mListener;
 
-    public RentalAdapter(@NonNull Context context, ArrayList<Rental> list) {
-        super(context, 0 , list);
-        mContext = context;
-        rentalList = list;
+    public interface OnItemClickListener {
+        void onButtonClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
+
+
+    public RentalAdapter(@NonNull FirestoreRecyclerOptions<Rental> options) {
+        super(options);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RentalHolder holder, int position, @NonNull Rental model) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yy", Locale.ENGLISH);
+        String dateString = dateFormat.format(model.getRentalDueDate());
+        holder.bookTitle.setText(model.getBookTitle());
+        holder.dueDate.setText(dateString);
+
+        Date startDate = model.getRentalStartDate();
+        Date dueDate = model.getRentalDueDate();
+
+        int diffInDays = Math.round(( (dueDate.getTime() - startDate.getTime())
+                / (1000 * 60 * 60 * 24) ));
+
+        if(diffInDays >= 29){
+            holder.renewRental.setEnabled(false);
+            holder.renewRental.setText("Disable");
+
+        }
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View listItem = convertView;
-        if(listItem == null)
-            listItem = LayoutInflater.from(mContext).inflate(R.layout.list_item,parent,false);
+    public RentalHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        Rental currentRental = rentalList.get(position);
-
-        TextView bookName = (TextView) listItem.findViewById(R.id.bookName);
-        bookName.setText(currentRental.getBook().toString());
-
-        TextView bookDate = (TextView) listItem.findViewById(R.id.bookDate);
-        bookDate.setText(currentRental.getRentalDueDate().toString());
-
-        return listItem;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.myrental_list_adapter, parent, false);
+        return new RentalHolder(view, mListener);
     }
+
+
+    class RentalHolder extends RecyclerView.ViewHolder{
+        TextView bookTitle;
+        TextView dueDate;
+        Button renewRental;
+
+
+
+        protected RentalHolder(@NonNull final View itemView, final OnItemClickListener listener){
+            super(itemView);
+            bookTitle = itemView.findViewById(R.id.bookName);
+            dueDate = itemView.findViewById(R.id.var_myrental_duedate);
+            renewRental = itemView.findViewById(R.id.bmyrentals_renewRental);
+
+            renewRental.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onButtonClick(position);
+                        }
+                    }
+                }
+            });
+
+
+
+        }
+    }
+
+
+
 }

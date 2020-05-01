@@ -42,6 +42,7 @@
     <string name="edit_qty_label">Quantity: </string>
     <string name="edit_qty_default">Qty in stock</string>
     <string name="edit_but_label">Submit</string>
+    <string name="get_book">Get Book</string>
 
     <!-- Main Screen -->
     <string name="main_header">Active Rentals</string>
@@ -112,5 +113,14 @@
         <item>Ascending</item>
         <item>Descending</item>
     </string-array>
+
+    <!-- Rental List adapter-->
+    <string name="lDueDate">Due Date</string>
+    <string name="bRenewRental">Renew</string>
+
+    <!--My Rentals-->
+    <string name="myRetnals">My Rentals</string>
+    <string name="bookName">Name</string>
+    <string name="ReturnDate">Return Date</string>
 
 </resources>
