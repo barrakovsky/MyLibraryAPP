@@ -34,6 +34,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,6 +46,8 @@ public class ViewBookInfoActivity extends BaseActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference reviewRef;
     private FirebaseUser user;
+    FirebaseFirestore firebaseFirestore;
+
 
 
     private ReviewAdapter adapter;
@@ -213,7 +216,10 @@ public class ViewBookInfoActivity extends BaseActivity {
 
             CollectionReference collectionReference = db.collection("Users").document(user.getUid()).collection("Rentals");
 
-            String rentalStartDate = java.text.DateFormat.getDateTimeInstance().format(new Date());
+
+            Date rentalStartDate = Calendar.getInstance().getTime();
+            Date rentalDueDate = futureDate(rentalStartDate, 14);
+
 
 
             Map<String, Object> userRental = new HashMap<>();
@@ -222,16 +228,39 @@ public class ViewBookInfoActivity extends BaseActivity {
             userRental.put("rentalID", rentalID);
             userRental.put("active", active);
             userRental.put("bookTitle", book.getTitle());
-            userRental.put("rentalDueDate", "");
+            userRental.put("rentalDueDate", rentalDueDate);
             userRental.put("isbn", book.getIsbn());
             userRental.put("amount", "");
             userRental.put("returnedDate", "");
             userRental.put("rentalStartDate", rentalStartDate);
 
+            String message = "You checked out " + book.getTitle();
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+
+
 
             collectionReference.add(userRental);
 
     }
+
+
+
+    public Date futureDate(Date currentDate, int days) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(currentDate);
+        calendar.add(Calendar.DATE, days);
+
+        Date futureDate = calendar.getTime();
+
+        return futureDate;
+    }
+
+    public void placeHold(View v)
+    {
+
+    }
+
+
 
     // Recyclerview for reviews shown at bottom of screen
     private void setUpRecyclerView() {
