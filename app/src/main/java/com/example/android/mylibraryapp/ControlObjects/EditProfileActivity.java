@@ -117,8 +117,8 @@ public class EditProfileActivity extends BaseActivity {
 
 
                 documentReference.update(
-                        "firstName", information.getfName(),
-                        "lastName", information.getlName(),
+                        "firstName", information.getFirstName(),
+                        "lastName", information.getLastName(),
                         "userName", information.getUserName(),
                         "phone", information.getPhone(),
                         "email", information.getEmail()

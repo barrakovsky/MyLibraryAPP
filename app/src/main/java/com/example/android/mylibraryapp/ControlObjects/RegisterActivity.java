@@ -141,9 +141,9 @@ public class RegisterActivity extends AppCompatActivity {
                             uid = firebaseAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = firebaseFirestore.collection("Users").document(uid);
                             Map<String, Object> user = new HashMap<>();
-                            user.put("userID", information.getUserId());
-                            user.put("firstName", information.getfName());
-                            user.put("lastName", information.getlName());
+                            user.put("userID", information.getUserID());
+                            user.put("firstName", information.getFirstName());
+                            user.put("lastName", information.getLastName());
                             user.put("userName", information.getUserName());
                             user.put("email", information.getEmail());
                             user.put("phone", information.getPhone());

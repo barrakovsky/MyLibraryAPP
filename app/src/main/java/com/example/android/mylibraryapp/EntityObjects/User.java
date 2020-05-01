@@ -1,17 +1,13 @@
 package com.example.android.mylibraryapp.EntityObjects;
 
 
-import com.example.android.mylibraryapp.EntityObjects.Favorite;
-import com.example.android.mylibraryapp.EntityObjects.Payment;
-import com.example.android.mylibraryapp.EntityObjects.Rental;
-
 import java.util.List;
 
 public class User {
 
-    private String userId;
-    private String fName;
-    private String lName;
+    private String userID;
+    private String firstName;
+    private String lastName;
     private String email;
     private String phone;
     private String userName;
@@ -25,11 +21,11 @@ public class User {
         // empty constructor
     }
 
-    public User(String userId, String fName, String lName, String userName, String email, String phone, boolean superUser){
+    public User(String userID, String firstName, String lastName, String userName, String email, String phone, boolean superUser){
 
-        this.userId = userId;
-        this.fName = fName;
-        this.lName = lName;
+        this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.userName = userName;
         this.email = email;
         this.phone = phone;
@@ -39,28 +35,28 @@ public class User {
 
     private String password;
 
-    public String getUserId() {
-        return userId;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public String getlName() {
-        return lName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setlName(String lName) {
-        this.lName = lName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getfName() {
-        return fName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setfName(String fName) {
-        this.fName = fName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public void setUserName(String userName) {
@@ -122,9 +118,9 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userId='" + userId + '\'' +
-                ", fName='" + fName + '\'' +
-                ", lName='" + lName + '\'' +
+                "userId='" + userID + '\'' +
+                ", fName='" + firstName + '\'' +
+                ", lName='" + lastName + '\'' +
                 ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +

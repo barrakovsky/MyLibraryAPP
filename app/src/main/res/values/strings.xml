@@ -68,6 +68,16 @@
     <string name="lBookRequests">View Requests</string>
     <string name="lViewUsers">View Users</string>
 
+    <!-- View Users -->
+    <string name="usr_header">View Users</string>
+
+    <!-- User list item -->
+    <string name="usr_item_uname">Username</string>
+    <string name="usr_item_name">Full Name</string>
+    <string name="usr_item_email">Email</string>
+    <string name="usr_item_ID">(ID)</string>
+    <string name="usr_item_phone">Phone #</string>
+
     <!-- Payments/fees activity -->
     <string name="pay_header">View Payments</string>
     <string name="pay_out">Outstanding</string>
@@ -79,7 +89,7 @@
     <string name="pay_item_paid">Date Paid</string>
     <string name="pay_item_amt">Amount Paid</string>
     <string name="pay_item_due">Amount Due</string>
-    
+
     <!-- Search field options -->
     <string-array name="search_fields">
         <item>Title</item>
