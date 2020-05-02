@@ -123,4 +123,10 @@
     <string name="bookName">Name</string>
     <string name="ReturnDate">Return Date</string>
 
+    <!--Edit Book details-->
+    <string name="getBook">Get Book</string>
+    <string name="enterISBN">Enter ISBN and press Get Book</string>
+    <string name="editBookbookTitle">Book Title</string>
+    <string name="adminaAuthorName">Author</string>
+
 </resources>
