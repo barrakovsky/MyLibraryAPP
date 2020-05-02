@@ -1,5 +1,6 @@
 package com.example.android.mylibraryapp.ControlObjects;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -34,6 +35,9 @@ public class EditReviewActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent i = getIntent();
+        super.isAdmin = i.getBooleanExtra("isAdmin", true);
 
         // We'll just reuse the Add Review layout. No reason not to
         setContentView(R.layout.activity_review);
