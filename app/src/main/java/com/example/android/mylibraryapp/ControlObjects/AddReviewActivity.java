@@ -1,5 +1,6 @@
 package com.example.android.mylibraryapp.ControlObjects;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -35,6 +36,10 @@ public class AddReviewActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent i = getIntent();
+        super.isAdmin = i.getBooleanExtra("isAdmin", false);
+
         firebaseAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_review);
 
