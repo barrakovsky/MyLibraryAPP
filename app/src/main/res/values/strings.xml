@@ -66,6 +66,7 @@
     <string name="bAdminRemoveBook">Remove Book</string>
     <string name="lAdminEditBook">Edit Book</string>
     <string name="lViewAllRentals">View Rentals</string>
+    <string name="lBookQty">Edit Book Qty</string>
     <string name="lBookRequests">View Requests</string>
     <string name="lViewUsers">View Users</string>
 
@@ -128,5 +129,21 @@
     <string name="enterISBN">Enter ISBN and press Get Book</string>
     <string name="editBookbookTitle">Book Title</string>
     <string name="adminaAuthorName">Author</string>
+
+    <!--Remove Book-->
+    <string name="removeBook">Remove Book</string>
+    <string name="hintISBN">Enter ISBN and press delete book</string>
+    <string name="bDeleteBook">Delete Book</string>
+
+    <!--Edit Book qty-->
+    <string name="EditBookqQty">Edit Book Qty</string>
+    <string name="aveQtyHint">Available Qty</string>
+    <string name="openRentalQty">Open Rental Qty</string>
+    <string name="editQtyAdd">Add</string>
+    <string name="editQtyReduce">Remove</string>
+    <string name="chooseOperation">Choose Operation:</string>
+    <string name="qtyToAddOrRemove">Enter a qty to add or remove</string>
+    <string name="adjustQty">Adjust Qty</string>
+
 
 </resources>

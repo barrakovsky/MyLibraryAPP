@@ -46,16 +46,23 @@ public class AdminView extends BaseActivity {
                             startActivity(addBook);
                             break;
                         case R.id.adminRemoveBook:
-                            Toast.makeText(AdminView.this, "clicked on remove book", Toast.LENGTH_SHORT).show();
+                            Intent removeBook = new Intent(AdminView.this, DeleteBook.class);
+                            startActivity(removeBook);
+                            break;
                         case R.id.adminEditBook:
                             Intent editBook = new Intent(AdminView.this, EditBookDetailsActivity.class);
                             startActivity(editBook);
+                            break;
                         case R.id.adminViewRenatls:
                             Toast.makeText(AdminView.this, "clicked on view rentals", Toast.LENGTH_SHORT).show();
+                            break;
                         case R.id.adminViewRequests:
-                            Toast.makeText(AdminView.this, "clicked on view requests", Toast.LENGTH_SHORT).show();
+                           Intent editInvQty = new Intent(AdminView.this, EditBookQty.class);
+                            startActivity(editInvQty);
+                            break;
                        case R.id.adminViewUsers:
                             Toast.makeText(AdminView.this, "clicked on view users", Toast.LENGTH_SHORT).show();
+                            break;
                     }
                 }
             });

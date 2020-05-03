@@ -27,6 +27,8 @@
         <activity android:name=".ControlObjects.ViewFavoritesActivity" />
         <activity android:name=".ControlObjects.AddBookToDB" />
         <activity android:name=".ControlObjects.AdminView" />
+        <activity android:name=".ControlObjects.DeleteBook"/>
+        <activity android:name=".ControlObjects.EditBookQty"/>
         <activity android:name=".ControlObjects.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

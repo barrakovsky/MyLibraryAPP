@@ -242,16 +242,15 @@
                 android:orientation="vertical">
 
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lBookRequests"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/lBookQty"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:layout_gravity="center_horizontal"/>
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="wrap_content"

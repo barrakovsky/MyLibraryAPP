@@ -30,7 +30,7 @@
                 android:textSize="30sp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/bookTitle"
+                android:id="@+id/editBookbookTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 

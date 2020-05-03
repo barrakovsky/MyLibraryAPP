@@ -94,7 +94,7 @@ public class AddBookToDB extends BaseActivity{
                     isbn_editText.requestFocus();
                     return;
                 }
-                final long isbn = Long.parseLong(isbn_temp);;
+                final long isbn = Long.parseLong(isbn_temp);
 
                 final String publisher = publisher_editText.getText().toString();
                 final String bookGenre = genre_editText.getText().toString();
@@ -123,7 +123,7 @@ public class AddBookToDB extends BaseActivity{
                 value = 0;
                 String yearString = String.valueOf(year);
                 if(!TextUtils.isEmpty(publishedYear_temp)){
-                    if (!TextUtils.isDigitsOnly(publishedYear_temp) || publishedYear_temp.length() != 4 || publishedYear_temp.compareTo(yearString) <= 0){
+                    if (!TextUtils.isDigitsOnly(publishedYear_temp) || publishedYear_temp.length() != 4 || publishedYear_temp.compareTo(yearString) > 0){
                         Toast.makeText(AddBookToDB.this, "Published year should be 4 digits and published year should be smaller or equal to the current year", Toast.LENGTH_SHORT).show();
                         publishedYear_edit_Text.requestFocus();
                         return;
