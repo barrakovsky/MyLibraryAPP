@@ -60,7 +60,7 @@ public class RentalAdapter extends FirestoreRecyclerAdapter<Rental, RentalAdapte
 
         if(diffInDays >= 29){
             holder.renewRental.setEnabled(false);
-            holder.renewRental.setText("Disable");
+            holder.renewRental.setText("Disabled");
 
         }
     }
