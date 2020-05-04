@@ -120,7 +120,7 @@ public class RentalActivity extends BaseActivity {
         final int fPosition = position;
         final Date fdueDate = rental.getRentalDueDate();
         //pushing the update into the db
-        rentalRef.whereEqualTo("rentalId", rental.getRentalID()).get()
+        rentalRef.whereEqualTo("rentalID", rental.getRentalID()).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
                     @Override
