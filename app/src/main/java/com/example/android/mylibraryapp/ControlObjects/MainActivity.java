@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -45,6 +47,7 @@ public class MainActivity extends BaseActivity {
     TextView userFirstName;
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,10 +85,8 @@ public class MainActivity extends BaseActivity {
     .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                arrayList.clear();
-                listView = findViewById(R.id.homePageListView);
+
                 if (task.isSuccessful() && task.getResult() != null) {
-                    //arrayList.add(ds.getString(""));
 
                     userFirstName = findViewById(R.id.userFirstName);
 
@@ -93,12 +94,32 @@ public class MainActivity extends BaseActivity {
                     firstname = task.getResult().getString("firstName");
                     userFirstName.setText("Hello " + firstname);
                 }
-
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,arrayList);
-                arrayAdapter.notifyDataSetChanged();
-                listView.setAdapter(arrayAdapter);
             }
         });
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        Task<QuerySnapshot> docRef = firebaseFirestore.collection("Users").document(user.getUid())
+                .collection("Rentals")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        arrayList.clear();
+                        listView = findViewById(R.id.homePageListView);
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                arrayList.add(document.getString("bookTitle"));
+
+                                Map<String, Object> map = document.getData();
+                                String amount = map.get("bookTitle").toString();
+
+                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,arrayList);
+                                arrayAdapter.notifyDataSetChanged();
+                                listView.setAdapter(arrayAdapter);
+                            }
+                        }
+                    }
+                });
+
     }
 
 }
